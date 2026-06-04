@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <a href="https://trendshift.io/repositories/23482" target="_blank"><img src="https://trendshift.io/api/badge/repositories/23482" alt="Lum1104%2FUnderstand-Anything | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
+  <a href="https://trendshift.io/repositories/23482" target="_blank"><img src="https://trendshift.io/api/badge/repositories/23482" alt="GodSealS%2FUnderstand-Anything | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 </p>
 
 <p align="center">
@@ -16,7 +16,7 @@
 
 <p align="center">
   <a href="#-クイックスタート"><img src="https://img.shields.io/badge/Quick_Start-blue" alt="クイックスタート" /></a>
-  <a href="https://github.com/Lum1104/Understand-Anything/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow" alt="License: MIT" /></a>
+  <a href="https://github.com/GodSealS/Understand-Anything/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow" alt="License: MIT" /></a>
   <a href="https://docs.anthropic.com/en/docs/claude-code"><img src="https://img.shields.io/badge/Claude_Code-8A2BE2" alt="Claude Code" /></a>
   <a href="#codex"><img src="https://img.shields.io/badge/Codex-000000" alt="Codex" /></a>
   <a href="#vs-code--github-copilot"><img src="https://img.shields.io/badge/Copilot-24292e" alt="Copilot" /></a>
@@ -104,7 +104,7 @@ Understand Anything は [Claude Code Plugin](https://code.claude.com/docs/en/plu
 ### 1. プラグインをインストール
 
 ```bash
-/plugin marketplace add Lum1104/Understand-Anything
+/plugin marketplace add GodSealS/Understand-Anything
 /plugin install understand-anything
 ```
 
@@ -178,7 +178,7 @@ Understand-Anythingは複数のAIコーディングプラットフォームで�
 ### Claude Code（ネイティブ）
 
 ```bash
-/plugin marketplace add Lum1104/Understand-Anything
+/plugin marketplace add GodSealS/Understand-Anything
 /plugin install understand-anything
 ```
 
@@ -186,14 +186,14 @@ Understand-Anythingは複数のAIコーディングプラットフォームで�
 
 **macOS / Linux：**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Lum1104/Understand-Anything/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.sh | bash
 # プラットフォームを直接指定して対話プロンプトをスキップすることもできます：
-curl -fsSL https://raw.githubusercontent.com/Lum1104/Understand-Anything/main/install.sh | bash -s codex
+curl -fsSL https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.sh | bash -s codex
 ```
 
 **Windows（PowerShell）：**
 ```powershell
-iwr -useb https://raw.githubusercontent.com/Lum1104/Understand-Anything/main/install.ps1 | iex
+iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.ps1 | iex
 ```
 
 インストーラーはリポジトリを `~/.understand-anything/repo` にクローンし、選択したプラットフォーム用のシンボリックリンクを作成します。完了後はCLI/IDEを再起動してください。
@@ -206,7 +206,7 @@ iwr -useb https://raw.githubusercontent.com/Lum1104/Understand-Anything/main/ins
 
 Cursorはこのリポジトリをクローンすると `.cursor-plugin/plugin.json` 経由でプラグインを自動検出します。手動インストールは不要です — クローンしてCursorで開くだけです。
 
-自動検出されない場合は、手動でインストールしてください：**Cursor Settings → Plugins** を開き、検索欄に `https://github.com/Lum1104/Understand-Anything` を貼り付けて追加します。
+自動検出されない場合は、手動でインストールしてください：**Cursor Settings → Plugins** を開き、検索欄に `https://github.com/GodSealS/Understand-Anything` を貼り付けて追加します。
 
 ### VS Code + GitHub Copilot
 
@@ -217,7 +217,7 @@ GitHub Copilot拡張機能（v1.108+）をインストールしたVS Codeは、`
 ### Copilot CLI
 
 ```bash
-copilot plugin install Lum1104/Understand-Anything:understand-anything-plugin
+copilot plugin install GodSealS/Understand-Anything:understand-anything-plugin
 ```
 
 ### プラットフォーム互換性
@@ -245,7 +245,7 @@ copilot plugin install Lum1104/Understand-Anything:understand-anything-plugin
 
 グラフは単なる JSON ファイルです——**一度コミットすれば、チームメンバーはパイプラインを実行せずに済みます**。オンボーディング、PR レビュー、docs-as-code ワークフローに最適です。
 
-> **例：** [GoogleCloudPlatform/microservices-demo（fork）](https://github.com/Lum1104/microservices-demo) —— コミット済みのグラフを含む Go / Java / Python / Node のリファレンスプロジェクト。
+> **例：** [GoogleCloudPlatform/microservices-demo（fork）](https://github.com/GodSealS/microservices-demo) —— コミット済みのグラフを含む Go / Java / Python / Node のリファレンスプロジェクト。
 
 **コミット対象：** `.understand-anything/` 内のすべてのファイル。ただし `intermediate/` と `diff-overlay.json` は除きます（これらはローカルの一時ファイルです）。
 
@@ -328,11 +328,11 @@ git add .gitattributes .understand-anything/
 
 ## Star History
 
-<a href="https://www.star-history.com/?repos=Lum1104%2FUnderstand-Anything&type=date&legend=top-left">
+<a href="https://www.star-history.com/?repos=GodSealS%2FUnderstand-Anything&type=date&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=Lum1104/Understand-Anything&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=Lum1104/Understand-Anything&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/image?repos=Lum1104/Understand-Anything&type=date&legend=top-left" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=GodSealS/Understand-Anything&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=GodSealS/Understand-Anything&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/image?repos=GodSealS/Understand-Anything&type=date&legend=top-left" />
  </picture>
 </a>
 
@@ -341,5 +341,5 @@ git add .gitattributes .understand-anything/
 </p>
 
 <p align="center">
-  MIT License &copy; <a href="https://github.com/Lum1104">Lum1104</a>
+  MIT License &copy; <a href="https://github.com/GodSealS">GodSealS</a>
 </p>
