@@ -3,7 +3,7 @@
 <p align="center">
   <strong>Превращай любую кодовую базу, базу знаний или документацию в интерактивный граф знаний, который можно исследовать, искать в нём и задавать вопросы.</strong>
   <br />
-  <em>Работает с Claude Code, Codex, Cursor, Copilot, Gemini CLI и другими.</em>
+  <em>Работает с Claude Code, CodeBuddy, Codex, Cursor, Copilot, Gemini CLI и другими.</em>
 </p>
 
 <p align="center">
@@ -23,6 +23,7 @@
   <a href="#copilot-cli"><img src="https://img.shields.io/badge/Copilot_CLI-24292e" alt="Copilot CLI" /></a>
   <a href="#gemini-cli"><img src="https://img.shields.io/badge/Gemini_CLI-4285F4" alt="Gemini CLI" /></a>
   <a href="#opencode"><img src="https://img.shields.io/badge/OpenCode-38bdf8" alt="OpenCode" /></a>
+  <a href="#codebuddy"><img src="https://img.shields.io/badge/CodeBuddy-0052D9" alt="CodeBuddy" /></a>
   <a href="https://understand-anything.com"><img src="https://img.shields.io/badge/Сайт-d4a574" alt="Homepage" /></a>
   <a href="https://understand-anything.com/demo/"><img src="https://img.shields.io/badge/Демо-00c853" alt="Live Demo" /></a>
 </p>
@@ -182,7 +183,7 @@ Understand-Anything работает с несколькими платформ�
 /plugin install understand-anything
 ```
 
-### Установка одной командой (Codex / OpenCode / OpenClaw / Antigravity / Gemini CLI / Pi Agent / Vibe CLI / VS Code Copilot / Hermes / Cline / KIMI CLI)
+### Установка одной командой (Codex / OpenCode / OpenClaw / Antigravity / Gemini CLI / Pi Agent / Vibe CLI / VS Code Copilot / Hermes / Cline / KIMI CLI / CodeBuddy)
 
 **macOS / Linux:**
 ```bash
@@ -198,7 +199,7 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 
 Установщик клонирует репозиторий в `~/.understand-anything/repo` и создаёт нужные симлинки для выбранной платформы. После установки перезапустите свой CLI/IDE.
 
-- Поддерживаемые значения `<platform>`: `gemini`, `codex`, `opencode`, `pi`, `openclaw`, `antigravity`, `vibe`, `vscode`, `hermes`, `cline`, `kimi`
+- Поддерживаемые значения `<platform>`: `codebuddy`, `gemini`, `codex`, `opencode`, `pi`, `openclaw`, `antigravity`, `vibe`, `vscode`, `hermes`, `cline`, `kimi`
 - Обновление: `./install.sh --update`
 - Удаление: `./install.sh --uninstall <platform>`
 
@@ -220,6 +221,27 @@ VS Code с GitHub Copilot (v1.108+) автоматически обнаружи�
 copilot plugin install GodSealS/Understand-Anything:understand-anything-plugin
 ```
 
+
+### CodeBuddy
+
+CodeBuddy следует соглашению .codebuddy/skills/ для персональных навыков. Используйте скрипт установки:
+
+**macOS / Linux:**
+`ash
+curl -fsSL https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.sh | bash -s codebuddy
+`
+
+**Windows (PowerShell):**
+`powershell
+iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.ps1 | iex
+# Выберите codebuddy при запросе или передайте напрямую:
+. .\install.ps1 codebuddy
+`
+
+Перезапустите CodeBuddy после установки — 8 навыков (/understand, /understand-chat, /understand-dashboard и др.) будут автоматически обнаружены из ~/.codebuddy/skills/.
+
+Если вы предпочитаете навыки на уровне проекта (ограниченные одним рабочим пространством без глобальной установки), скопируйте или создайте символические ссылки на каталоги навыков в папке .codebuddy/skills/ вашего проекта.
+
 ### Совместимость с платформами
 
 | Платформа | Статус | Способ установки |
@@ -238,6 +260,7 @@ copilot plugin install GodSealS/Understand-Anything:understand-anything-plugin
 | Hermes | ✅ Поддерживается | `install.sh hermes` |
 | Cline | ✅ Поддерживается | `install.sh cline` |
 | KIMI CLI | ✅ Поддерживается | `install.sh kimi` |
+| CodeBuddy | ✅ Поддерживается | `install.sh codebuddy` |
 
 ---
 

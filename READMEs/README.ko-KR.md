@@ -2,7 +2,7 @@
 <p align="center">
   <strong>모든 코드베이스, 지식 베이스 또는 문서를 탐색, 검색, 질문할 수 있는 인터랙티브 지식 그래프로 변환합니다.</strong>
   <br />
-  <em>Claude Code, Codex, Cursor, Copilot, Gemini CLI 등 다양한 플랫폼을 지원합니다.</em>
+  <em>Claude Code, CodeBuddy, Codex, Cursor, Copilot, Gemini CLI 등 다양한 플랫폼을 지원합니다.</em>
 </p>
 
 <p align="center">
@@ -22,6 +22,7 @@
   <a href="#copilot-cli"><img src="https://img.shields.io/badge/Copilot_CLI-24292e" alt="Copilot CLI" /></a>
   <a href="#gemini-cli"><img src="https://img.shields.io/badge/Gemini_CLI-4285F4" alt="Gemini CLI" /></a>
   <a href="#opencode"><img src="https://img.shields.io/badge/OpenCode-38bdf8" alt="OpenCode" /></a>
+  <a href="#codebuddy"><img src="https://img.shields.io/badge/CodeBuddy-0052D9" alt="CodeBuddy" /></a>
   <a href="https://understand-anything.com"><img src="https://img.shields.io/badge/홈페이지-d4a574" alt="Homepage" /></a>
   <a href="https://understand-anything.com/demo/"><img src="https://img.shields.io/badge/라이브_데모-00c853" alt="Live Demo" /></a>
 </p>
@@ -181,7 +182,7 @@ Understand-Anything은 다양한 AI 코딩 플랫폼에서 사용할 수 있습�
 /plugin install understand-anything
 ```
 
-### 한 줄 설치 (Codex / OpenCode / OpenClaw / Antigravity / Gemini CLI / Pi Agent / Vibe CLI / VS Code Copilot / Hermes / Cline / KIMI CLI)
+### 한 줄 설치 (Codex / OpenCode / OpenClaw / Antigravity / Gemini CLI / Pi Agent / Vibe CLI / VS Code Copilot / Hermes / Cline / KIMI CLI / CodeBuddy)
 
 **macOS / Linux:**
 ```bash
@@ -197,7 +198,7 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 
 설치 스크립트는 저장소를 `~/.understand-anything/repo`에 클론하고 선택한 플랫폼에 맞는 심볼릭 링크를 생성합니다. 설치 후 CLI 또는 IDE를 재시작하세요.
 
-- 지원되는 `<platform>` 값: `gemini`, `codex`, `opencode`, `pi`, `openclaw`, `antigravity`, `vibe`, `vscode`, `hermes`, `cline`, `kimi`
+- 지원되는 `<platform>` 값: `codebuddy`, `gemini`, `codex`, `opencode`, `pi`, `openclaw`, `antigravity`, `vibe`, `vscode`, `hermes`, `cline`, `kimi`
 - 이후 업데이트: `./install.sh --update`
 - 제거: `./install.sh --uninstall <platform>`
 
@@ -219,6 +220,27 @@ GitHub Copilot(v1.108+)이 설치된 VS Code는 `.copilot-plugin/plugin.json`을
 copilot plugin install GodSealS/Understand-Anything:understand-anything-plugin
 ```
 
+
+### CodeBuddy
+
+CodeBuddy 는 .codebuddy/skills/ 개인 스킬 규칙을 따릅니다. 설치 스크립트를 사용하세요:
+
+**macOS / Linux：**
+`ash
+curl -fsSL https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.sh | bash -s codebuddy
+`
+
+**Windows（PowerShell）：**
+`powershell
+iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.ps1 | iex
+# 프롬프트에서 codebuddy 선택 또는 직접 전달:
+. .\install.ps1 codebuddy
+`
+
+설치 후 CodeBuddy 를 다시 시작하세요 — 8개의 스킬 (/understand, /understand-chat, /understand-dashboard 등)이 ~/.codebuddy/skills/ 에서 자동으로 검색됩니다.
+
+프로젝트 수준 스킬(전역 설치 없이 단일 워크스페이스로 제한)을 원한다면 스킬 디렉토리를 프로젝트의 .codebuddy/skills/ 폴더에 복사하거나 심볼릭 링크하세요.
+
 ### 플랫폼 호환성
 
 | 플랫폼 | 상태 | 설치 방법 |
@@ -237,6 +259,7 @@ copilot plugin install GodSealS/Understand-Anything:understand-anything-plugin
 | Hermes | ✅ 지원 | `install.sh hermes` |
 | Cline | ✅ 지원 | `install.sh cline` |
 | KIMI CLI | ✅ 지원 | `install.sh kimi` |
+| CodeBuddy | ✅ 지원 | `install.sh codebuddy` |
 
 ---
 

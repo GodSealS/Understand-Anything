@@ -2,7 +2,7 @@
 <p align="center">
   <strong>將任意程式碼庫、知識庫或文件轉化為可探索、可搜尋、可對話的互動式知識圖譜</strong>
   <br />
-  <em>支援 Claude Code、Codex、Cursor、Copilot、Gemini CLI 等多平台。</em>
+  <em>支援 Claude Code、CodeBuddy、Codex、Cursor、Copilot、Gemini CLI 等多平台。</em>
 </p>
 
 <p align="center">
@@ -22,6 +22,7 @@
   <a href="#copilot-cli"><img src="https://img.shields.io/badge/Copilot_CLI-24292e" alt="Copilot CLI" /></a>
   <a href="#gemini-cli"><img src="https://img.shields.io/badge/Gemini_CLI-4285F4" alt="Gemini CLI" /></a>
   <a href="#opencode"><img src="https://img.shields.io/badge/OpenCode-38bdf8" alt="OpenCode" /></a>
+  <a href="#codebuddy"><img src="https://img.shields.io/badge/CodeBuddy-0052D9" alt="CodeBuddy" /></a>
   <a href="https://understand-anything.com"><img src="https://img.shields.io/badge/專案首頁-d4a574" alt="Homepage" /></a>
   <a href="https://understand-anything.com/demo/"><img src="https://img.shields.io/badge/線上展示-00c853" alt="Live Demo" /></a>
 </p>
@@ -181,7 +182,7 @@ Understand-Anything 可在多個 AI 編碼平台上執行。
 /plugin install understand-anything
 ```
 
-### 一行指令安裝（Codex / OpenCode / OpenClaw / Antigravity / Gemini CLI / Pi Agent / Vibe CLI / VS Code Copilot / Hermes / Cline / KIMI CLI）
+### 一行指令安裝（Codex / OpenCode / OpenClaw / Antigravity / Gemini CLI / Pi Agent / Vibe CLI / VS Code Copilot / Hermes / Cline / KIMI CLI / CodeBuddy）
 
 **macOS / Linux：**
 ```bash
@@ -197,7 +198,7 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 
 安裝指令稿會將儲存庫複製到 `~/.understand-anything/repo`，並為所選平台建立相應的符號連結。安裝完成後請重新啟動 CLI 或 IDE。
 
-- 支援的 `<platform>` 取值：`gemini`、`codex`、`opencode`、`pi`、`openclaw`、`antigravity`、`vibe`、`vscode`、`hermes`、`cline`、`kimi`
+- 支援的 `<platform>` 取值：`codebuddy`、`gemini`、`codex`、`opencode`、`pi`、`openclaw`、`antigravity`、`vibe`、`vscode`、`hermes`、`cline`、`kimi`
 - 後續更新：`./install.sh --update`
 - 解除安裝：`./install.sh --uninstall <platform>`
 
@@ -219,6 +220,27 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 copilot plugin install GodSealS/Understand-Anything:understand-anything-plugin
 ```
 
+
+### CodeBuddy
+
+CodeBuddy 遵循 .codebuddy/skills/ 的個人技能約定。透過安裝腳本安裝：
+
+**macOS / Linux：**
+`ash
+curl -fsSL https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.sh | bash -s codebuddy
+`
+
+**Windows（PowerShell）：**
+`powershell
+iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.ps1 | iex
+# 提示時選擇 codebuddy，或直接傳參：
+. .\install.ps1 codebuddy
+`
+
+安裝後重啟 CodeBuddy — 8 個技能（/understand、/understand-chat、/understand-dashboard 等）將從 ~/.codebuddy/skills/ 自動發現。
+
+如果希望使用專案級技能（僅限目前工作區，無需全域安裝），可將技能目錄複製或軟連結到專案的 .codebuddy/skills/ 資料夾中。
+
 ### 多平台相容性
 
 | 平台 | 狀態 | 安裝方式 |
@@ -237,6 +259,7 @@ copilot plugin install GodSealS/Understand-Anything:understand-anything-plugin
 | Hermes | ✅ 支援 | `install.sh hermes` |
 | Cline | ✅ 支援 | `install.sh cline` |
 | KIMI CLI | ✅ 支援 | `install.sh kimi` |
+| CodeBuddy | ✅ 支援 | `install.sh codebuddy` |
 
 ---
 

@@ -3,7 +3,7 @@
 <p align="center">
   <strong>あらゆるコードベース、ナレッジベース、ドキュメントを、探索・検索・質問ができるインタラクティブなナレッジグラフに変換します。</strong>
   <br />
-  <em>Claude Code、Codex、Cursor、Copilot、Gemini CLI など、マルチプラットフォーム対応。</em>
+  <em>Claude Code、CodeBuddy、Codex、Cursor、Copilot、Gemini CLI など、マルチプラットフォーム対応。</em>
 </p>
 
 <p align="center">
@@ -23,6 +23,7 @@
   <a href="#copilot-cli"><img src="https://img.shields.io/badge/Copilot_CLI-24292e" alt="Copilot CLI" /></a>
   <a href="#gemini-cli"><img src="https://img.shields.io/badge/Gemini_CLI-4285F4" alt="Gemini CLI" /></a>
   <a href="#opencode"><img src="https://img.shields.io/badge/OpenCode-38bdf8" alt="OpenCode" /></a>
+  <a href="#codebuddy"><img src="https://img.shields.io/badge/CodeBuddy-0052D9" alt="CodeBuddy" /></a>
   <a href="https://understand-anything.com"><img src="https://img.shields.io/badge/Homepage-d4a574" alt="ホームページ" /></a>
   <a href="https://understand-anything.com/demo/"><img src="https://img.shields.io/badge/Live_Demo-00c853" alt="ライブデモ" /></a>
 </p>
@@ -182,7 +183,7 @@ Understand-Anythingは複数のAIコーディングプラットフォームで�
 /plugin install understand-anything
 ```
 
-### ワンラインインストール（Codex / OpenCode / OpenClaw / Antigravity / Gemini CLI / Pi Agent / Vibe CLI / VS Code Copilot / Hermes / Cline / KIMI CLI）
+### ワンラインインストール（Codex / OpenCode / OpenClaw / Antigravity / Gemini CLI / Pi Agent / Vibe CLI / VS Code Copilot / Hermes / Cline / KIMI CLI / CodeBuddy）
 
 **macOS / Linux：**
 ```bash
@@ -198,7 +199,7 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 
 インストーラーはリポジトリを `~/.understand-anything/repo` にクローンし、選択したプラットフォーム用のシンボリックリンクを作成します。完了後はCLI/IDEを再起動してください。
 
-- サポートされる `<platform>` 値：`gemini`、`codex`、`opencode`、`pi`、`openclaw`、`antigravity`、`vibe`、`vscode`、`hermes`、`cline`、`kimi`
+- サポートされる `<platform>` 値：`codebuddy`、`gemini`、`codex`、`opencode`、`pi`、`openclaw`、`antigravity`、`vibe`、`vscode`、`hermes`、`cline`、`kimi`
 - 後で更新：`./install.sh --update`
 - アンインストール：`./install.sh --uninstall <platform>`
 
@@ -220,6 +221,27 @@ GitHub Copilot拡張機能（v1.108+）をインストールしたVS Codeは、`
 copilot plugin install GodSealS/Understand-Anything:understand-anything-plugin
 ```
 
+
+### CodeBuddy
+
+CodeBuddy は .codebuddy/skills/ のパーソナルスキル規約に従います。インストールスクリプトを使用してください：
+
+**macOS / Linux：**
+`ash
+curl -fsSL https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.sh | bash -s codebuddy
+`
+
+**Windows（PowerShell）：**
+`powershell
+iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.ps1 | iex
+# プロンプトで codebuddy を選択、または直接渡す：
+. .\install.ps1 codebuddy
+`
+
+インストール後、CodeBuddy を再起動してください — 8 つのスキル（/understand、/understand-chat、/understand-dashboard など）は ~/.codebuddy/skills/ から自動検出されます。
+
+プロジェクトレベルのスキル（グローバルインストールなしで単一ワークスペースに限定）をご希望の場合は、スキルディレクトリをプロジェクトの .codebuddy/skills/ フォルダにコピーまたはシンボリックリンクしてください。
+
 ### プラットフォーム互換性
 
 | プラットフォーム | ステータス | インストール方法 |
@@ -238,6 +260,7 @@ copilot plugin install GodSealS/Understand-Anything:understand-anything-plugin
 | Hermes | ✅ サポート | `install.sh hermes` |
 | Cline | ✅ サポート | `install.sh cline` |
 | KIMI CLI | ✅ サポート | `install.sh kimi` |
+| CodeBuddy | ✅ サポート | `install.sh codebuddy` |
 
 ---
 
