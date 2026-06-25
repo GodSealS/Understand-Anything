@@ -34,12 +34,14 @@ $Platforms = [ordered]@{
     pi          = @{ Target = (Join-Path $HOME '.agents\skills');             Style = 'per-skill' }
     openclaw    = @{ Target = (Join-Path $HOME '.openclaw\skills');           Style = 'folder' }
     antigravity = @{ Target = (Join-Path $HOME '.gemini\antigravity\skills'); Style = 'folder' }
+    vibe        = @{ Target = (Join-Path $HOME '.vibe\skills');               Style = 'per-skill' }
     vscode      = @{ Target = (Join-Path $HOME '.copilot\skills');            Style = 'per-skill' }
     hermes      = @{ Target = (Join-Path $HOME '.hermes\skills');             Style = 'folder' }
     cline       = @{ Target = (Join-Path $HOME '.cline\skills');              Style = 'folder' }
     kimi        = @{ Target = (Join-Path $HOME '.kimi\skills');               Style = 'folder' }
     trae        = @{ Target = (Join-Path $HOME '.trae\skills');               Style = 'per-skill' }
     codebuddy   = @{ Target = (Join-Path $HOME '.codebuddy\skills');          Style = 'per-skill' }
+    codesquad   = @{ Target = (Join-Path $HOME '.codesquad\skills');          Style = 'per-skill' }
 }
 
 function Show-Usage {

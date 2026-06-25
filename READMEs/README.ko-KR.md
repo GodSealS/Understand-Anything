@@ -198,7 +198,7 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 
 설치 스크립트는 저장소를 `~/.understand-anything/repo`에 클론하고 선택한 플랫폼에 맞는 심볼릭 링크를 생성합니다. 설치 후 CLI 또는 IDE를 재시작하세요.
 
-- 지원되는 `<platform>` 값: `codebuddy`, `gemini`, `codex`, `opencode`, `pi`, `openclaw`, `antigravity`, `vibe`, `vscode`, `hermes`, `cline`, `kimi`
+- 지원되는 `<platform>` 값: `codebuddy`, `codesquad`, `gemini`, `codex`, `opencode`, `pi`, `openclaw`, `antigravity`, `vibe`, `vscode`, `hermes`, `cline`, `kimi`
 - 이후 업데이트: `./install.sh --update`
 - 제거: `./install.sh --uninstall <platform>`
 
@@ -241,6 +241,26 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 
 프로젝트 수준 스킬(전역 설치 없이 단일 워크스페이스로 제한)을 원한다면 스킬 디렉토리를 프로젝트의 .codebuddy/skills/ 폴더에 복사하거나 심볼릭 링크하세요.
 
+### CodeSquad
+
+CodeSquad 는 .codesquad/skills/ 개인 스킬 규칙을 따릅니다. 설치 스크립트를 사용하세요:
+
+**macOS / Linux：**
+`ash
+curl -fsSL https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.sh | bash -s codesquad
+`
+
+**Windows（PowerShell）：**
+`powershell
+iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.ps1 | iex
+# 프롬프트에서 codesquad 선택 또는 직접 전달:
+. .\install.ps1 codesquad
+`
+
+설치 후 CodeSquad 를 다시 시작하세요 — 8개의 스킬 (/understand, /understand-chat, /understand-dashboard 등)이 ~/.codesquad/skills/ 에서 자동으로 검색됩니다.
+
+프로젝트 수준 스킬(전역 설치 없이 단일 워크스페이스로 제한)을 원한다면 스킬 디렉토리를 프로젝트의 .codesquad/skills/ 폴더에 복사하거나 심볼릭 링크하세요.
+
 ### 플랫폼 호환성
 
 | 플랫폼 | 상태 | 설치 방법 |
@@ -260,6 +280,7 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 | Cline | ✅ 지원 | `install.sh cline` |
 | KIMI CLI | ✅ 지원 | `install.sh kimi` |
 | CodeBuddy | ✅ 지원 | `install.sh codebuddy` |
+| CodeSquad | ✅ 지원 | `install.sh codesquad` |
 
 ---
 

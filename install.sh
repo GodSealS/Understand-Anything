@@ -41,6 +41,7 @@ cline|$HOME/.cline/skills|folder
 kimi|$HOME/.kimi/skills|folder
 trae|$HOME/.trae/skills|per-skill
 codebuddy|$HOME/.codebuddy/skills|per-skill
+codesquad|$HOME/.codesquad/skills|per-skill
 EOF
 }
 

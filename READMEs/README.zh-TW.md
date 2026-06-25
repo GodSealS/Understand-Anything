@@ -198,7 +198,7 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 
 安裝指令稿會將儲存庫複製到 `~/.understand-anything/repo`，並為所選平台建立相應的符號連結。安裝完成後請重新啟動 CLI 或 IDE。
 
-- 支援的 `<platform>` 取值：`codebuddy`、`gemini`、`codex`、`opencode`、`pi`、`openclaw`、`antigravity`、`vibe`、`vscode`、`hermes`、`cline`、`kimi`
+- 支援的 `<platform>` 取值：`codebuddy`、`codesquad`、`gemini`、`codex`、`opencode`、`pi`、`openclaw`、`antigravity`、`vibe`、`vscode`、`hermes`、`cline`、`kimi`
 - 後續更新：`./install.sh --update`
 - 解除安裝：`./install.sh --uninstall <platform>`
 
@@ -241,6 +241,26 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 
 如果希望使用專案級技能（僅限目前工作區，無需全域安裝），可將技能目錄複製或軟連結到專案的 .codebuddy/skills/ 資料夾中。
 
+### CodeSquad
+
+CodeSquad 遵循 .codesquad/skills/ 的個人技能約定。透過安裝腳本安裝：
+
+**macOS / Linux：**
+`ash
+curl -fsSL https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.sh | bash -s codesquad
+`
+
+**Windows（PowerShell）：**
+`powershell
+iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.ps1 | iex
+# 提示時選擇 codesquad，或直接傳參：
+. .\install.ps1 codesquad
+`
+
+安裝後重啟 CodeSquad — 8 個技能（/understand、/understand-chat、/understand-dashboard 等）將從 ~/.codesquad/skills/ 自動發現。
+
+如果希望使用專案級技能（僅限目前工作區，無需全域安裝），可將技能目錄複製或軟連結到專案的 .codesquad/skills/ 資料夾中。
+
 ### 多平台相容性
 
 | 平台 | 狀態 | 安裝方式 |
@@ -260,6 +280,7 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 | Cline | ✅ 支援 | `install.sh cline` |
 | KIMI CLI | ✅ 支援 | `install.sh kimi` |
 | CodeBuddy | ✅ 支援 | `install.sh codebuddy` |
+| CodeSquad | ✅ 支援 | `install.sh codesquad` |
 
 ---
 

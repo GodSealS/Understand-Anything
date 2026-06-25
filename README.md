@@ -26,6 +26,7 @@
   <a href="#mistral-vibe-cli"><img src="https://img.shields.io/badge/Vibe_CLI-7c3aed" alt="Vibe CLI" /></a>
   <a href="#trae"><img src="https://img.shields.io/badge/Trae-7e22ce" alt="Trae" /></a>
   <a href="#codebuddy"><img src="https://img.shields.io/badge/CodeBuddy-0052D9" alt="CodeBuddy" /></a>
+  <a href="#codesquad"><img src="https://img.shields.io/badge/CodeSquad-FF6B35" alt="CodeSquad" /></a>
   <a href="https://understand-anything.com"><img src="https://img.shields.io/badge/Homepage-d4a574" alt="Homepage" /></a>
   <a href="https://understand-anything.com/demo/"><img src="https://img.shields.io/badge/Live_Demo-00c853" alt="Live Demo" /></a>
 </p>
@@ -187,7 +188,7 @@ Understand-Anything works across multiple AI coding platforms.
 /plugin install understand-anything
 ```
 
-### One-line install (Codex / OpenCode / OpenClaw / Antigravity / Gemini CLI / Pi Agent / Vibe CLI / VS Code Copilot / Hermes / Cline / KIMI CLI / Trae / CodeBuddy)
+### One-line install (Codex / OpenCode / OpenClaw / Antigravity / Gemini CLI / Pi Agent / Vibe CLI / VS Code Copilot / Hermes / Cline / KIMI CLI / Trae / CodeBuddy / CodeSquad)
 
 **macOS / Linux:**
 ```bash
@@ -203,7 +204,7 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 
 The installer clones the repo to `~/.understand-anything/repo` and creates the right symlinks for the chosen platform. Restart your CLI/IDE afterwards.
 
-- Supported `<platform>` values: `gemini`, `codex`, `opencode`, `pi`, `openclaw`, `antigravity`, `vibe`, `vscode`, `hermes`, `cline`, `kimi`, `trae`, `codebuddy`
+- Supported `<platform>` values: `gemini`, `codex`, `opencode`, `pi`, `openclaw`, `antigravity`, `vibe`, `vscode`, `hermes`, `cline`, `kimi`, `trae`, `codebuddy`, `codesquad`
 - Update later: `./install.sh --update`
 - Uninstall: `./install.sh --uninstall <platform>`
 
@@ -245,6 +246,26 @@ If you prefer project-level skills (scoped to a single workspace without global 
 copilot plugin install Lum1104/Understand-Anything:understand-anything-plugin
 ```
 
+### CodeSquad
+
+CodeSquad follows a `.codesquad/skills/` convention for personal skills. Use the install script:
+
+**macOS / Linux:**
+```bash
+curl -fsSL https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.sh | bash -s codesquad
+```
+
+**Windows (PowerShell):**
+```powershell
+iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.ps1 | iex
+# Choose codesquad when prompted, or pass it directly:
+. .\install.ps1 codesquad
+```
+
+Restart CodeSquad afterwards — the 8 skills (`/understand`, `/understand-chat`, `/understand-dashboard`, etc.) will be automatically discovered from `~/.codesquad/skills/`.
+
+If you prefer project-level skills (scoped to a single workspace without global install), copy or symlink the skills directories into your project's `.codesquad/skills/` folder.
+
 ### Platform Compatibility
 
 | Platform | Status | Install Method |
@@ -265,6 +286,7 @@ copilot plugin install Lum1104/Understand-Anything:understand-anything-plugin
 | KIMI CLI | ✅ Supported | `install.sh kimi` |
 | Trae | ✅ Supported | `install.sh trae` |
 | CodeBuddy | ✅ Supported | `install.sh codebuddy` |
+| CodeSquad | ✅ Supported | `install.sh codesquad` |
 
 ---
 

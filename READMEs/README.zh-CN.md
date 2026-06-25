@@ -198,7 +198,7 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 
 安装脚本会将仓库克隆到 `~/.understand-anything/repo`，并为所选平台创建相应的符号链接。安装完成后请重启 CLI 或 IDE。
 
-- 支持的 `<platform>` 取值：`codebuddy`、`gemini`、`codex`、`opencode`、`pi`、`openclaw`、`antigravity`、`vibe`、`vscode`、`hermes`、`cline`、`kimi`
+- 支持的 `<platform>` 取值：`codebuddy`、`codesquad`、`gemini`、`codex`、`opencode`、`pi`、`openclaw`、`antigravity`、`vibe`、`vscode`、`hermes`、`cline`、`kimi`
 - 后续更新：`./install.sh --update`
 - 卸载：`./install.sh --uninstall <platform>`
 
@@ -241,6 +241,26 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 
 如果希望使用项目级技能（仅限当前工作区，无需全局安装），可将技能目录复制或软链接到项目的 .codebuddy/skills/ 文件夹中。
 
+### CodeSquad
+
+CodeSquad 遵循 .codesquad/skills/ 的个人技能约定。通过安装脚本安装：
+
+**macOS / Linux：**
+`ash
+curl -fsSL https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.sh | bash -s codesquad
+`
+
+**Windows（PowerShell）：**
+`powershell
+iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.ps1 | iex
+# 提示时选择 codesquad，或直接传参：
+. .\install.ps1 codesquad
+`
+
+安装后重启 CodeSquad — 8 个技能（/understand、/understand-chat、/understand-dashboard 等）将从 ~/.codesquad/skills/ 自动发现。
+
+如果希望使用项目级技能（仅限当前工作区，无需全局安装），可将技能目录复制或软链接到项目的 .codesquad/skills/ 文件夹中。
+
 ### 多平台兼容
 
 | 平台 | 状态 | 安装方式 |
@@ -260,6 +280,7 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 | Cline | ✅ 支持 | `install.sh cline` |
 | KIMI CLI | ✅ 支持 | `install.sh kimi` |
 | CodeBuddy | ✅ 支持 | `install.sh codebuddy` |
+| CodeSquad | ✅ 支持 | `install.sh codesquad` |
 
 ---
 

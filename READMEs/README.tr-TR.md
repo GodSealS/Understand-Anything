@@ -199,7 +199,7 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 
 Kurulum betiği depoyu `~/.understand-anything/repo` dizinine klonlar ve seçilen platform için uygun sembolik bağlantıları oluşturur. Sonrasında CLI/IDE'ni yeniden başlat.
 
-- Desteklenen `<platform>` değerleri: `codebuddy`, `gemini`, `codex`, `opencode`, `pi`, `openclaw`, `antigravity`, `vibe`, `vscode`, `hermes`, `cline`, `kimi`
+- Desteklenen `<platform>` değerleri: `codebuddy`, `codesquad`, `gemini`, `codex`, `opencode`, `pi`, `openclaw`, `antigravity`, `vibe`, `vscode`, `hermes`, `cline`, `kimi`
 - Daha sonra güncelle: `./install.sh --update`
 - Kaldır: `./install.sh --uninstall <platform>`
 
@@ -242,6 +242,26 @@ Ardından CodeBuddy'yi yeniden başlatın — 8 beceri (/understand, /understand
 
 Proje düzeyinde becerileri tercih ederseniz (genel kurulum olmadan tek bir çalışma alanına kapsamlı), beceri dizinlerini projenizin .codebuddy/skills/ klasörüne kopyalayın veya sembolik bağlantı oluşturun.
 
+### CodeSquad
+
+CodeSquad, kişisel beceriler için .codesquad/skills/ kuralını takip eder. Kurulum komut dosyasını kullanın:
+
+**macOS / Linux:**
+`ash
+curl -fsSL https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.sh | bash -s codesquad
+`
+
+**Windows (PowerShell):**
+`powershell
+iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.ps1 | iex
+# İstendiğinde codesquad'yi seçin veya doğrudan iletin:
+. .\install.ps1 codesquad
+`
+
+Ardından CodeSquad'yi yeniden başlatın — 8 beceri (/understand, /understand-chat, /understand-dashboard, vb.) ~/.codesquad/skills/ konumundan otomatik olarak keşfedilecektir.
+
+Proje düzeyinde becerileri tercih ederseniz (genel kurulum olmadan tek bir çalışma alanına kapsamlı), beceri dizinlerini projenizin .codesquad/skills/ klasörüne kopyalayın veya sembolik bağlantı oluşturun.
+
 ### Platform Uyumluluğu
 
 | Platform | Durum | Kurulum Yöntemi |
@@ -261,6 +281,7 @@ Proje düzeyinde becerileri tercih ederseniz (genel kurulum olmadan tek bir çal
 | Cline | ✅ Destekleniyor | `install.sh cline` |
 | KIMI CLI | ✅ Destekleniyor | `install.sh kimi` |
 | CodeBuddy | ✅ Destekleniyor | `install.sh codebuddy` |
+| CodeSquad | ✅ Destekleniyor | `install.sh codesquad` |
 
 ---
 

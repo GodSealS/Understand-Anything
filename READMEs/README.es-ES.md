@@ -198,7 +198,7 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 
 El instalador clona el repositorio en `~/.understand-anything/repo` y crea los enlaces simbólicos correspondientes para la plataforma elegida. Reinicia tu CLI/IDE al terminar.
 
-- Valores soportados de `<platform>`: `codebuddy`, `gemini`, `codex`, `opencode`, `pi`, `openclaw`, `antigravity`, `vibe`, `vscode`, `hermes`, `cline`, `kimi`
+- Valores soportados de `<platform>`: `codebuddy`, `codesquad`, `gemini`, `codex`, `opencode`, `pi`, `openclaw`, `antigravity`, `vibe`, `vscode`, `hermes`, `cline`, `kimi`
 - Actualizar más adelante: `./install.sh --update`
 - Desinstalar: `./install.sh --uninstall <platform>`
 
@@ -241,6 +241,26 @@ Reinicia CodeBuddy después — las 8 habilidades (/understand, /understand-chat
 
 Si prefieres habilidades a nivel de proyecto (limitadas a un solo espacio de trabajo sin instalación global), copia o crea un enlace simbólico de los directorios de habilidades en la carpeta .codebuddy/skills/ del proyecto.
 
+### CodeSquad
+
+CodeSquad sigue la convención .codesquad/skills/ para habilidades personales. Usa el script de instalación:
+
+**macOS / Linux:**
+`ash
+curl -fsSL https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.sh | bash -s codesquad
+`
+
+**Windows (PowerShell):**
+`powershell
+iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.ps1 | iex
+# Elige codesquad cuando se solicite, o pásalo directamente:
+. .\install.ps1 codesquad
+`
+
+Reinicia CodeSquad después — las 8 habilidades (/understand, /understand-chat, /understand-dashboard, etc.) se detectarán automáticamente desde ~/.codesquad/skills/.
+
+Si prefieres habilidades a nivel de proyecto (limitadas a un solo espacio de trabajo sin instalación global), copia o crea un enlace simbólico de los directorios de habilidades en la carpeta .codesquad/skills/ del proyecto.
+
 ### Compatibilidad de Plataformas
 
 | Plataforma | Estado | Método de Instalación |
@@ -260,6 +280,7 @@ Si prefieres habilidades a nivel de proyecto (limitadas a un solo espacio de tra
 | Cline | ✅ Soportado | `install.sh cline` |
 | KIMI CLI | ✅ Soportado | `install.sh kimi` |
 | CodeBuddy | ✅ Soportado | `install.sh codebuddy` |
+| CodeSquad | ✅ Soportado | `install.sh codesquad` |
 
 ---
 

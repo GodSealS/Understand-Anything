@@ -199,7 +199,7 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 
 インストーラーはリポジトリを `~/.understand-anything/repo` にクローンし、選択したプラットフォーム用のシンボリックリンクを作成します。完了後はCLI/IDEを再起動してください。
 
-- サポートされる `<platform>` 値：`codebuddy`、`gemini`、`codex`、`opencode`、`pi`、`openclaw`、`antigravity`、`vibe`、`vscode`、`hermes`、`cline`、`kimi`
+- サポートされる `<platform>` 値：`codebuddy`、`codesquad`、`gemini`、`codex`、`opencode`、`pi`、`openclaw`、`antigravity`、`vibe`、`vscode`、`hermes`、`cline`、`kimi`
 - 後で更新：`./install.sh --update`
 - アンインストール：`./install.sh --uninstall <platform>`
 
@@ -242,6 +242,26 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 
 プロジェクトレベルのスキル（グローバルインストールなしで単一ワークスペースに限定）をご希望の場合は、スキルディレクトリをプロジェクトの .codebuddy/skills/ フォルダにコピーまたはシンボリックリンクしてください。
 
+### CodeSquad
+
+CodeSquad は .codesquad/skills/ のパーソナルスキル規約に従います。インストールスクリプトを使用してください：
+
+**macOS / Linux：**
+`ash
+curl -fsSL https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.sh | bash -s codesquad
+`
+
+**Windows（PowerShell）：**
+`powershell
+iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.ps1 | iex
+# プロンプトで codesquad を選択、または直接渡す：
+. .\install.ps1 codesquad
+`
+
+インストール後、CodeSquad を再起動してください — 8 つのスキル（/understand、/understand-chat、/understand-dashboard など）は ~/.codesquad/skills/ から自動検出されます。
+
+プロジェクトレベルのスキル（グローバルインストールなしで単一ワークスペースに限定）をご希望の場合は、スキルディレクトリをプロジェクトの .codesquad/skills/ フォルダにコピーまたはシンボリックリンクしてください。
+
 ### プラットフォーム互換性
 
 | プラットフォーム | ステータス | インストール方法 |
@@ -261,6 +281,7 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 | Cline | ✅ サポート | `install.sh cline` |
 | KIMI CLI | ✅ サポート | `install.sh kimi` |
 | CodeBuddy | ✅ サポート | `install.sh codebuddy` |
+| CodeSquad | ✅ サポート | `install.sh codesquad` |
 
 ---
 

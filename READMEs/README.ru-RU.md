@@ -199,7 +199,7 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 
 Установщик клонирует репозиторий в `~/.understand-anything/repo` и создаёт нужные симлинки для выбранной платформы. После установки перезапустите свой CLI/IDE.
 
-- Поддерживаемые значения `<platform>`: `codebuddy`, `gemini`, `codex`, `opencode`, `pi`, `openclaw`, `antigravity`, `vibe`, `vscode`, `hermes`, `cline`, `kimi`
+- Поддерживаемые значения `<platform>`: `codebuddy`, `codesquad`, `gemini`, `codex`, `opencode`, `pi`, `openclaw`, `antigravity`, `vibe`, `vscode`, `hermes`, `cline`, `kimi`
 - Обновление: `./install.sh --update`
 - Удаление: `./install.sh --uninstall <platform>`
 
@@ -242,6 +242,26 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 
 Если вы предпочитаете навыки на уровне проекта (ограниченные одним рабочим пространством без глобальной установки), скопируйте или создайте символические ссылки на каталоги навыков в папке .codebuddy/skills/ вашего проекта.
 
+### CodeSquad
+
+CodeSquad следует соглашению .codesquad/skills/ для персональных навыков. Используйте скрипт установки:
+
+**macOS / Linux:**
+`ash
+curl -fsSL https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.sh | bash -s codesquad
+`
+
+**Windows (PowerShell):**
+`powershell
+iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.ps1 | iex
+# Выберите codesquad при запросе или передайте напрямую:
+. .\install.ps1 codesquad
+`
+
+Перезапустите CodeSquad после установки — 8 навыков (/understand, /understand-chat, /understand-dashboard и др.) будут автоматически обнаружены из ~/.codesquad/skills/.
+
+Если вы предпочитаете навыки на уровне проекта (ограниченные одним рабочим пространством без глобальной установки), скопируйте или создайте символические ссылки на каталоги навыков в папке .codesquad/skills/ вашего проекта.
+
 ### Совместимость с платформами
 
 | Платформа | Статус | Способ установки |
@@ -261,6 +281,7 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 | Cline | ✅ Поддерживается | `install.sh cline` |
 | KIMI CLI | ✅ Поддерживается | `install.sh kimi` |
 | CodeBuddy | ✅ Поддерживается | `install.sh codebuddy` |
+| CodeSquad | ✅ Поддерживается | `install.sh codesquad` |
 
 ---
 
