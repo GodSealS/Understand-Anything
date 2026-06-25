@@ -17,3 +17,6 @@ venv/
 *.pyc
 *.pyo
 Thumbs.db
+.codebuddy/
+CODEBUDDY.md
+.idea/
