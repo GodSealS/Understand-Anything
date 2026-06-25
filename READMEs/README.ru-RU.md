@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <a href="https://trendshift.io/repositories/23482" target="_blank"><img src="https://trendshift.io/api/badge/repositories/23482" alt="GodSealS%2FUnderstand-Anything | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
+  <a href="https://trendshift.io/repositories/23482" target="_blank"><img src="https://trendshift.io/api/badge/repositories/23482" alt="Understand Anything | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 </p>
 
 <p align="center">
@@ -16,7 +16,7 @@
 
 <p align="center">
   <a href="#-быстрый-старт"><img src="https://img.shields.io/badge/Быстрый_старт-blue" alt="Quick Start" /></a>
-  <a href="https://github.com/GodSealS/Understand-Anything/blob/main/LICENSE"><img src="https://img.shields.io/badge/Лицензия-MIT-yellow" alt="License: MIT" /></a>
+  <a href="https://github.com/Egonex-AI/Understand-Anything/blob/main/LICENSE"><img src="https://img.shields.io/badge/Лицензия-MIT-yellow" alt="License: MIT" /></a>
   <a href="https://docs.anthropic.com/en/docs/claude-code"><img src="https://img.shields.io/badge/Claude_Code-8A2BE2" alt="Claude Code" /></a>
   <a href="#codex"><img src="https://img.shields.io/badge/Codex-000000" alt="Codex" /></a>
   <a href="#vs-code--github-copilot"><img src="https://img.shields.io/badge/Copilot-24292e" alt="Copilot" /></a>
@@ -33,9 +33,9 @@
 </p>
 
 <p align="center">
-  <strong>💬 <a href="https://discord.gg/pydat66RY">Присоединяйтесь к сообществу в Discord &rarr;</a></strong>
+  <strong>An open-source project from <a href="https://github.com/Egonex-AI">Egonex</a></strong>
   <br />
-  <em>Задавайте вопросы, делитесь тем, что вы построили, получайте помощь от сообщества.</em>
+  <em>Originally created by <a href="https://github.com/Lum1104">Lum1104</a>.</em>
 </p>
 
 ---
@@ -105,9 +105,11 @@ Understand Anything — это [плагин для Claude Code](https://code.cl
 ### 1. Установите плагин
 
 ```bash
-/plugin marketplace add GodSealS/Understand-Anything
+/plugin marketplace add Egonex-AI/Understand-Anything
 /plugin install understand-anything
 ```
+
+> **Используете локальную модель?** Для приватных или корпоративных сценариев направьте свою платформу на локального провайдера моделей, например [Ollama](https://docs.ollama.com/integrations) — следуйте его руководству по интеграции, чтобы сменить провайдера модели.
 
 ### 2. Проанализируйте кодовую базу
 
@@ -116,6 +118,8 @@ Understand Anything — это [плагин для Claude Code](https://code.cl
 ```
 
 Мультиагентный пайплайн сканирует ваш проект, извлекает каждый файл, функцию, класс и зависимость, а затем строит граф знаний и сохраняет его в `.understand-anything/knowledge-graph.json`.
+
+> **Обратите внимание на расход токенов:** Первый запуск `/understand` анализирует всю кодовую базу и может потреблять значительное количество токенов на больших проектах. Рекомендуем запускать его с тарифным планом / подпиской на токены или использовать локальную модель (см. выше) для инициализации. Последующие запуски по умолчанию инкрементальны — повторно анализируются только изменённые файлы — поэтому расходуют гораздо меньше токенов.
 
 **Локализованный вывод:** используйте `--language`, чтобы генерировать контент на нужном языке:
 
@@ -179,27 +183,27 @@ Understand-Anything работает с несколькими платформ�
 ### Claude Code (нативно)
 
 ```bash
-/plugin marketplace add GodSealS/Understand-Anything
+/plugin marketplace add Egonex-AI/Understand-Anything
 /plugin install understand-anything
 ```
 
-### Установка одной командой (Codex / OpenCode / OpenClaw / Antigravity / Gemini CLI / Pi Agent / Vibe CLI / VS Code Copilot / Hermes / Cline / KIMI CLI / CodeBuddy)
+### Установка одной командой (Codex / OpenCode / OpenClaw / Antigravity / Gemini CLI / Pi Agent / Vibe CLI / VS Code Copilot / Hermes / Cline / KIMI CLI / Nanobot / Kiro)
 
 **macOS / Linux:**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Egonex-AI/Understand-Anything/main/install.sh | bash
 # или передайте платформу, чтобы пропустить интерактивный выбор:
-curl -fsSL https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.sh | bash -s codex
+curl -fsSL https://raw.githubusercontent.com/Egonex-AI/Understand-Anything/main/install.sh | bash -s codex
 ```
 
 **Windows (PowerShell):**
 ```powershell
-iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.ps1 | iex
+iwr -useb https://raw.githubusercontent.com/Egonex-AI/Understand-Anything/main/install.ps1 | iex
 ```
 
 Установщик клонирует репозиторий в `~/.understand-anything/repo` и создаёт нужные симлинки для выбранной платформы. После установки перезапустите свой CLI/IDE.
 
-- Поддерживаемые значения `<platform>`: `codebuddy`, `codesquad`, `gemini`, `codex`, `opencode`, `pi`, `openclaw`, `antigravity`, `vibe`, `vscode`, `hermes`, `cline`, `kimi`
+- Поддерживаемые значения `<platform>`: `gemini`, `codex`, `opencode`, `pi`, `openclaw`, `antigravity`, `vibe`, `vscode`, `hermes`, `cline`, `kimi`, `nanobot`, `kiro`
 - Обновление: `./install.sh --update`
 - Удаление: `./install.sh --uninstall <platform>`
 
@@ -207,7 +211,7 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 
 Cursor автоматически обнаруживает плагин через `.cursor-plugin/plugin.json` при клонировании этого репозитория. Ручная установка не требуется — просто склонируйте и откройте в Cursor.
 
-Если автообнаружение не сработало, установите вручную: откройте **Cursor Settings → Plugins**, вставьте `https://github.com/GodSealS/Understand-Anything` в поле поиска и добавьте оттуда.
+Если автообнаружение не сработало, установите вручную: откройте **Cursor Settings → Plugins**, вставьте `https://github.com/Egonex-AI/Understand-Anything` в поле поиска и добавьте оттуда.
 
 ### VS Code + GitHub Copilot
 
@@ -218,7 +222,7 @@ VS Code с GitHub Copilot (v1.108+) автоматически обнаружи�
 ### Copilot CLI
 
 ```bash
-copilot plugin install GodSealS/Understand-Anything:understand-anything-plugin
+copilot plugin install Egonex-AI/Understand-Anything:understand-anything-plugin
 ```
 
 
@@ -262,6 +266,18 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 
 Если вы предпочитаете навыки на уровне проекта (ограниченные одним рабочим пространством без глобальной установки), скопируйте или создайте символические ссылки на каталоги навыков в папке .codesquad/skills/ вашего проекта.
 
+### Kiro CLI / IDE
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Egonex-AI/Understand-Anything/main/install.sh | bash -s kiro
+```
+
+После установки:
+- **Kiro CLI**: `kiro-cli chat --agent understand "Проанализируй этот проект"`
+- **Kiro IDE**: skills симлинкуются в `~/.kiro/skills/`, а агент `understand` записывается в `~/.kiro/agents/understand.json`, поэтому оба становятся доступны после перезапуска IDE.
+
+Для персональных skills (доступных во всех проектах) запустите `install.sh` выше с платформой `kiro`.
+
 ### Совместимость с платформами
 
 | Платформа | Статус | Способ установки |
@@ -282,6 +298,8 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 | KIMI CLI | ✅ Поддерживается | `install.sh kimi` |
 | CodeBuddy | ✅ Поддерживается | `install.sh codebuddy` |
 | CodeSquad | ✅ Поддерживается | `install.sh codesquad` |
+| Nanobot | ✅ Поддерживается | `install.sh nanobot` |
+| Kiro CLI / IDE | ✅ Поддерживается | `install.sh kiro` |
 
 ---
 
@@ -289,7 +307,7 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 
 Граф — это просто JSON. **Зафиксируйте его один раз, и коллеги смогут пропустить весь пайплайн.** Полезно для онбординга, ревью PR и подхода docs-as-code.
 
-> **Пример:** [GoogleCloudPlatform/microservices-demo (форк)](https://github.com/GodSealS/microservices-demo) — мультиязыковой проект (Go / Java / Python / Node) с уже зафиксированным графом.
+> **Пример:** [GoogleCloudPlatform/microservices-demo (форк)](https://github.com/GoogleCloudPlatform/microservices-demo) — мультиязыковой проект (Go / Java / Python / Node) с уже зафиксированным графом.
 
 **Что коммитить:** всё содержимое `.understand-anything/`, *кроме* `intermediate/` и `diff-overlay.json` (это локальные временные файлы).
 
@@ -372,11 +390,11 @@ git add .gitattributes .understand-anything/
 
 ## История звёзд
 
-<a href="https://www.star-history.com/?repos=GodSealS%2FUnderstand-Anything&type=date&legend=top-left">
+<a href="https://www.star-history.com/?repos=Egonex-AI%2FUnderstand-Anything&type=date&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=GodSealS/Understand-Anything&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=GodSealS/Understand-Anything&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/image?repos=GodSealS/Understand-Anything&type=date&legend=top-left" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=Egonex-AI/Understand-Anything&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=Egonex-AI/Understand-Anything&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/image?repos=Egonex-AI/Understand-Anything&type=date&legend=top-left" />
  </picture>
 </a>
 
@@ -385,5 +403,5 @@ git add .gitattributes .understand-anything/
 </p>
 
 <p align="center">
-  Лицензия MIT &copy; <a href="https://github.com/GodSealS">GodSealS</a>
+  MIT License &copy; Yuxiang Lin and Infinite Universe, Inc.
 </p>

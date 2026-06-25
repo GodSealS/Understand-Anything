@@ -7,7 +7,13 @@
 </p>
 
 <p align="center">
-  <a href="https://trendshift.io/repositories/23482" target="_blank"><img src="https://trendshift.io/api/badge/repositories/23482" alt="Lum1104%2FUnderstand-Anything | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
+  <strong>Understand Anything. <a href="https://egonex.ai">Understand Anyone.</a></strong>
+  <br />
+  <em>AI should help people, not replace them.</em>
+</p>
+
+<p align="center">
+  <a href="https://trendshift.io/repositories/23482" target="_blank"><img src="https://trendshift.io/api/badge/repositories/23482" alt="Understand Anything | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 </p>
 
 <p align="center">
@@ -16,7 +22,7 @@
 
 <p align="center">
   <a href="#-quick-start"><img src="https://img.shields.io/badge/Quick_Start-blue" alt="Quick Start" /></a>
-  <a href="https://github.com/Lum1104/Understand-Anything/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow" alt="License: MIT" /></a>
+  <a href="https://github.com/Egonex-AI/Understand-Anything/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow" alt="License: MIT" /></a>
   <a href="https://docs.anthropic.com/en/docs/claude-code"><img src="https://img.shields.io/badge/Claude_Code-8A2BE2" alt="Claude Code" /></a>
   <a href="#codex"><img src="https://img.shields.io/badge/Codex-000000" alt="Codex" /></a>
   <a href="#vs-code--github-copilot"><img src="https://img.shields.io/badge/Copilot-24292e" alt="Copilot" /></a>
@@ -29,6 +35,7 @@
   <a href="#codesquad"><img src="https://img.shields.io/badge/CodeSquad-FF6B35" alt="CodeSquad" /></a>
   <a href="https://understand-anything.com"><img src="https://img.shields.io/badge/Homepage-d4a574" alt="Homepage" /></a>
   <a href="https://understand-anything.com/demo/"><img src="https://img.shields.io/badge/Live_Demo-00c853" alt="Live Demo" /></a>
+  <a href="https://egonex.ai"><img src="https://img.shields.io/badge/Understand_Anyone-egonex.ai-d4a574" alt="Understand Anyone" /></a>
 </p>
 
 <p align="center">
@@ -36,9 +43,9 @@
 </p>
 
 <p align="center">
-  <strong>💬 <a href="https://discord.gg/pydat66RY">Join the Discord community &rarr;</a></strong>
+  <strong>An open-source project from <a href="https://github.com/Egonex-AI">Egonex</a></strong>
   <br />
-  <em>Ask questions, share what you've built, get help from the community.</em>
+  <em>Originally created by <a href="https://github.com/Lum1104">Lum1104</a>.</em>
 </p>
 
 ---
@@ -108,9 +115,11 @@ Point `/understand-knowledge` at a [Karpathy-pattern LLM wiki](https://gist.gith
 ### 1. Install the plugin
 
 ```bash
-/plugin marketplace add Lum1104/Understand-Anything
+/plugin marketplace add Egonex-AI/Understand-Anything
 /plugin install understand-anything
 ```
+
+> **Using a local model?** For privacy or enterprise setups, point your platform at a local model provider such as [Ollama](https://docs.ollama.com/integrations) — follow their integration guide to change the model provider.
 
 ### 2. Analyze your codebase
 
@@ -119,6 +128,8 @@ Point `/understand-knowledge` at a [Karpathy-pattern LLM wiki](https://gist.gith
 ```
 
 A multi-agent pipeline scans your project, extracts every file, function, class, and dependency, then builds a knowledge graph saved to `.understand-anything/knowledge-graph.json`.
+
+> **Heads up on token usage:** The initial `/understand` analyzes your whole codebase and can consume a significant number of tokens on large projects. We recommend running it on a token plan / subscription, or using a local model (see above) for initialization. Subsequent runs are incremental by default — only changed files are re-analyzed — so they use far fewer tokens.
 
 **Localized output:** Use `--language` to generate content in your preferred language:
 
@@ -184,27 +195,29 @@ Understand-Anything works across multiple AI coding platforms.
 ### Claude Code (Native)
 
 ```bash
-/plugin marketplace add GodSealS/Understand-Anything
+/plugin marketplace add Egonex-AI/Understand-Anything
 /plugin install understand-anything
 ```
 
-### One-line install (Codex / OpenCode / OpenClaw / Antigravity / Gemini CLI / Pi Agent / Vibe CLI / VS Code Copilot / Hermes / Cline / KIMI CLI / Trae / CodeBuddy / CodeSquad)
+
+### One-line install (Codex / OpenCode / OpenClaw / Antigravity / Gemini CLI / Pi Agent / Vibe CLI / VS Code Copilot / Hermes / Cline / KIMI CLI / Trae / Nanobot / Kiro)
+
 
 **macOS / Linux:**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Egonex-AI/Understand-Anything/main/install.sh | bash
 # or skip the prompt by passing the platform:
-curl -fsSL https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.sh | bash -s codex
+curl -fsSL https://raw.githubusercontent.com/Egonex-AI/Understand-Anything/main/install.sh | bash -s codex
 ```
 
 **Windows (PowerShell):**
 ```powershell
-iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.ps1 | iex
+iwr -useb https://raw.githubusercontent.com/Egonex-AI/Understand-Anything/main/install.ps1 | iex
 ```
 
 The installer clones the repo to `~/.understand-anything/repo` and creates the right symlinks for the chosen platform. Restart your CLI/IDE afterwards.
 
-- Supported `<platform>` values: `gemini`, `codex`, `opencode`, `pi`, `openclaw`, `antigravity`, `vibe`, `vscode`, `hermes`, `cline`, `kimi`, `trae`, `codebuddy`, `codesquad`
+- Supported `<platform>` values: `gemini`, `codex`, `opencode`, `pi`, `openclaw`, `antigravity`, `vibe`, `vscode`, `hermes`, `cline`, `kimi`, `trae`, `nanobot`, `kiro`
 - Update later: `./install.sh --update`
 - Uninstall: `./install.sh --uninstall <platform>`
 
@@ -212,7 +225,7 @@ The installer clones the repo to `~/.understand-anything/repo` and creates the r
 
 Cursor auto-discovers the plugin via `.cursor-plugin/plugin.json` when this repo is cloned. No manual installation needed — just clone and open in Cursor.
 
-If auto-discovery doesn't pick it up, install it manually: open **Cursor Settings → Plugins**, paste `https://github.com/GodSealS/Understand-Anything` into the search field, and add it from there.
+If auto-discovery doesn't pick it up, install it manually: open **Cursor Settings → Plugins**, paste `https://github.com/Egonex-AI/Understand-Anything` into the search field, and add it from there.
 
 ### VS Code + GitHub Copilot
 
@@ -243,8 +256,20 @@ If you prefer project-level skills (scoped to a single workspace without global 
 ### Copilot CLI
 
 ```bash
-copilot plugin install Lum1104/Understand-Anything:understand-anything-plugin
+copilot plugin install Egonex-AI/Understand-Anything:understand-anything-plugin
 ```
+
+### Kiro CLI / IDE
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Egonex-AI/Understand-Anything/main/install.sh | bash -s kiro
+```
+
+After installation:
+- **Kiro CLI**: `kiro-cli chat --agent understand "Analyze this project"`
+- **Kiro IDE**: The skills are symlinked into `~/.kiro/skills/` and the `understand` agent is written to `~/.kiro/agents/understand.json`, so both are available after restarting the IDE.
+
+For personal skills (available across all projects), run the `install.sh` above with the `kiro` platform.
 
 ### CodeSquad
 
@@ -287,6 +312,9 @@ If you prefer project-level skills (scoped to a single workspace without global 
 | Trae | ✅ Supported | `install.sh trae` |
 | CodeBuddy | ✅ Supported | `install.sh codebuddy` |
 | CodeSquad | ✅ Supported | `install.sh codesquad` |
+| Nanobot | ✅ Supported | `install.sh nanobot` |
+| Kiro CLI / IDE | ✅ Supported | `install.sh kiro` |
+
 
 ---
 
@@ -294,7 +322,7 @@ If you prefer project-level skills (scoped to a single workspace without global 
 
 The graph is just JSON — **commit it once, and teammates skip the pipeline**. Good for onboarding, PR reviews, and docs-as-code.
 
-> **Example:** [GoogleCloudPlatform/microservices-demo (fork)](https://github.com/Lum1104/microservices-demo) — Go / Java / Python / Node reference with a committed graph.
+> **Example:** [GoogleCloudPlatform/microservices-demo](https://github.com/GoogleCloudPlatform/microservices-demo) — Go / Java / Python / Node reference with a committed graph.
 
 **What to commit:** everything in `.understand-anything/` *except* `intermediate/` and `diff-overlay.json` (those are local scratch).
 
@@ -377,11 +405,11 @@ Please open an issue first for major changes so we can discuss the approach.
 
 ## Star History
 
-<a href="https://www.star-history.com/?repos=Lum1104%2FUnderstand-Anything&type=date&legend=top-left">
+<a href="https://www.star-history.com/?repos=Egonex-AI%2FUnderstand-Anything&type=date&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=Lum1104/Understand-Anything&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=Lum1104/Understand-Anything&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/image?repos=Lum1104/Understand-Anything&type=date&legend=top-left" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=Egonex-AI/Understand-Anything&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=Egonex-AI/Understand-Anything&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/image?repos=Egonex-AI/Understand-Anything&type=date&legend=top-left" />
  </picture>
 </a>
 
@@ -390,5 +418,5 @@ Please open an issue first for major changes so we can discuss the approach.
 </p>
 
 <p align="center">
-  MIT License &copy; <a href="https://github.com/Lum1104">Lum1104</a>
+  MIT License &copy; Yuxiang Lin and Infinite Universe, Inc.
 </p>

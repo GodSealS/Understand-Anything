@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <a href="https://trendshift.io/repositories/23482" target="_blank"><img src="https://trendshift.io/api/badge/repositories/23482" alt="GodSealS%2FUnderstand-Anything | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
+  <a href="https://trendshift.io/repositories/23482" target="_blank"><img src="https://trendshift.io/api/badge/repositories/23482" alt="Understand Anything | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 </p>
 
 <p align="center">
@@ -15,7 +15,7 @@
 
 <p align="center">
   <a href="#-빠른-시작"><img src="https://img.shields.io/badge/빠른_시작-blue" alt="Quick Start" /></a>
-  <a href="https://github.com/GodSealS/Understand-Anything/blob/main/LICENSE"><img src="https://img.shields.io/badge/라이선스-MIT-yellow" alt="License: MIT" /></a>
+  <a href="https://github.com/Egonex-AI/Understand-Anything/blob/main/LICENSE"><img src="https://img.shields.io/badge/라이선스-MIT-yellow" alt="License: MIT" /></a>
   <a href="https://docs.anthropic.com/en/docs/claude-code"><img src="https://img.shields.io/badge/Claude_Code-8A2BE2" alt="Claude Code" /></a>
   <a href="#codex"><img src="https://img.shields.io/badge/Codex-000000" alt="Codex" /></a>
   <a href="#vs-code--github-copilot"><img src="https://img.shields.io/badge/Copilot-24292e" alt="Copilot" /></a>
@@ -32,9 +32,9 @@
 </p>
 
 <p align="center">
-  <strong>💬 <a href="https://discord.gg/pydat66RY">Discord 커뮤니티 참여하기 &rarr;</a></strong>
+  <strong>An open-source project from <a href="https://github.com/Egonex-AI">Egonex</a></strong>
   <br />
-  <em>질문하고, 만든 것을 공유하고, 커뮤니티의 도움을 받으세요.</em>
+  <em>Originally created by <a href="https://github.com/Lum1104">Lum1104</a>.</em>
 </p>
 
 ---
@@ -104,9 +104,11 @@ Understand Anything은 [Claude Code Plugin](https://code.claude.com/docs/en/plug
 ### 1. 플러그인 설치
 
 ```bash
-/plugin marketplace add GodSealS/Understand-Anything
+/plugin marketplace add Egonex-AI/Understand-Anything
 /plugin install understand-anything
 ```
+
+> **로컬 모델을 사용하시나요?** 개인정보 보호나 엔터프라이즈 환경에서는 [Ollama](https://docs.ollama.com/integrations) 같은 로컬 모델 제공자를 사용하도록 플랫폼을 설정하세요 — 통합 가이드를 따라 모델 제공자를 변경할 수 있습니다.
 
 ### 2. 코드베이스 분석
 
@@ -115,6 +117,8 @@ Understand Anything은 [Claude Code Plugin](https://code.claude.com/docs/en/plug
 ```
 
 멀티 에이전트 파이프라인이 프로젝트를 스캔하고, 모든 파일, 함수, 클래스, 의존성을 추출한 뒤, `.understand-anything/knowledge-graph.json`에 지식 그래프를 저장합니다.
+
+> **토큰 사용량 안내:** 최초 `/understand`는 전체 코드베이스를 분석하므로 대규모 프로젝트에서는 상당한 토큰을 소비할 수 있습니다. 토큰 요금제 / 구독으로 실행하거나, 초기화에는 로컬 모델(위 참조)을 사용하는 것을 권장합니다. 이후 실행은 기본적으로 증분 방식이라 변경된 파일만 다시 분석하므로 훨씬 적은 토큰을 사용합니다.
 
 **로컬라이즈된 출력:** `--language`를 사용하여 원하는 언어로 내용을 생성:
 
@@ -178,27 +182,27 @@ Understand-Anything은 다양한 AI 코딩 플랫폼에서 사용할 수 있습�
 ### Claude Code (네이티브)
 
 ```bash
-/plugin marketplace add GodSealS/Understand-Anything
+/plugin marketplace add Egonex-AI/Understand-Anything
 /plugin install understand-anything
 ```
 
-### 한 줄 설치 (Codex / OpenCode / OpenClaw / Antigravity / Gemini CLI / Pi Agent / Vibe CLI / VS Code Copilot / Hermes / Cline / KIMI CLI / CodeBuddy)
+### 한 줄 설치 (Codex / OpenCode / OpenClaw / Antigravity / Gemini CLI / Pi Agent / Vibe CLI / VS Code Copilot / Hermes / Cline / KIMI CLI / Nanobot / Kiro)
 
 **macOS / Linux:**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Egonex-AI/Understand-Anything/main/install.sh | bash
 # 플랫폼 이름을 직접 전달하여 프롬프트를 건너뛸 수도 있습니다:
-curl -fsSL https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.sh | bash -s codex
+curl -fsSL https://raw.githubusercontent.com/Egonex-AI/Understand-Anything/main/install.sh | bash -s codex
 ```
 
 **Windows (PowerShell):**
 ```powershell
-iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/install.ps1 | iex
+iwr -useb https://raw.githubusercontent.com/Egonex-AI/Understand-Anything/main/install.ps1 | iex
 ```
 
 설치 스크립트는 저장소를 `~/.understand-anything/repo`에 클론하고 선택한 플랫폼에 맞는 심볼릭 링크를 생성합니다. 설치 후 CLI 또는 IDE를 재시작하세요.
 
-- 지원되는 `<platform>` 값: `codebuddy`, `codesquad`, `gemini`, `codex`, `opencode`, `pi`, `openclaw`, `antigravity`, `vibe`, `vscode`, `hermes`, `cline`, `kimi`
+- 지원되는 `<platform>` 값: `gemini`, `codex`, `opencode`, `pi`, `openclaw`, `antigravity`, `vibe`, `vscode`, `hermes`, `cline`, `kimi`, `nanobot`, `kiro`
 - 이후 업데이트: `./install.sh --update`
 - 제거: `./install.sh --uninstall <platform>`
 
@@ -206,7 +210,7 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 
 이 저장소를 클론하면 Cursor가 `.cursor-plugin/plugin.json`을 통해 플러그인을 자동으로 인식합니다. 수동 설치가 필요 없습니다. 클론 후 Cursor에서 열기만 하면 됩니다.
 
-자동 인식이 되지 않으면 수동으로 설치하세요: **Cursor Settings → Plugins**를 열고 검색란에 `https://github.com/GodSealS/Understand-Anything`를 붙여넣은 뒤 추가하세요.
+자동 인식이 되지 않으면 수동으로 설치하세요: **Cursor Settings → Plugins**를 열고 검색란에 `https://github.com/Egonex-AI/Understand-Anything`를 붙여넣은 뒤 추가하세요.
 
 ### VS Code + GitHub Copilot
 
@@ -217,7 +221,7 @@ GitHub Copilot(v1.108+)이 설치된 VS Code는 `.copilot-plugin/plugin.json`을
 ### Copilot CLI
 
 ```bash
-copilot plugin install GodSealS/Understand-Anything:understand-anything-plugin
+copilot plugin install Egonex-AI/Understand-Anything:understand-anything-plugin
 ```
 
 
@@ -261,6 +265,18 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 
 프로젝트 수준 스킬(전역 설치 없이 단일 워크스페이스로 제한)을 원한다면 스킬 디렉토리를 프로젝트의 .codesquad/skills/ 폴더에 복사하거나 심볼릭 링크하세요.
 
+### Kiro CLI / IDE
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Egonex-AI/Understand-Anything/main/install.sh | bash -s kiro
+```
+
+설치 후:
+- **Kiro CLI**: `kiro-cli chat --agent understand "이 프로젝트를 분석해줘"`
+- **Kiro IDE**: 스킬이 `~/.kiro/skills/`에 심볼릭 링크로 연결되고 `understand` 에이전트가 `~/.kiro/agents/understand.json`에 작성되므로, IDE를 재시작하면 둘 다 사용할 수 있습니다.
+
+모든 프로젝트에서 사용하는 개인 스킬로 설치하려면 위 `install.sh`를 `kiro` 플랫폼으로 실행하세요.
+
 ### 플랫폼 호환성
 
 | 플랫폼 | 상태 | 설치 방법 |
@@ -281,6 +297,8 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 | KIMI CLI | ✅ 지원 | `install.sh kimi` |
 | CodeBuddy | ✅ 지원 | `install.sh codebuddy` |
 | CodeSquad | ✅ 지원 | `install.sh codesquad` |
+| Nanobot | ✅ 지원 | `install.sh nanobot` |
+| Kiro CLI / IDE | ✅ 지원 | `install.sh kiro` |
 
 ---
 
@@ -288,7 +306,7 @@ iwr -useb https://raw.githubusercontent.com/GodSealS/Understand-Anything/main/in
 
 그래프는 단지 JSON 파일입니다 — **한 번만 커밋하면 팀원은 파이프라인을 건너뛸 수 있습니다**. 온보딩, PR 리뷰, docs-as-code 워크플로에 적합합니다.
 
-> **예시:** [GoogleCloudPlatform/microservices-demo (fork)](https://github.com/GodSealS/microservices-demo) — 커밋된 그래프를 포함한 Go / Java / Python / Node 레퍼런스 프로젝트.
+> **예시:** [GoogleCloudPlatform/microservices-demo](https://github.com/GoogleCloudPlatform/microservices-demo) — 커밋된 그래프를 포함한 Go / Java / Python / Node 레퍼런스 프로젝트.
 
 **커밋할 대상:** `.understand-anything/` 내부의 모든 파일. 단, `intermediate/` 와 `diff-overlay.json` 은 제외합니다 (이들은 로컬 임시 파일입니다).
 
@@ -371,11 +389,11 @@ git add .gitattributes .understand-anything/
 
 ## Star 히스토리
 
-<a href="https://www.star-history.com/?repos=GodSealS%2FUnderstand-Anything&type=date&legend=top-left">
+<a href="https://www.star-history.com/?repos=Egonex-AI%2FUnderstand-Anything&type=date&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=GodSealS/Understand-Anything&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=GodSealS/Understand-Anything&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/image?repos=GodSealS/Understand-Anything&type=date&legend=top-left" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=Egonex-AI/Understand-Anything&type=date&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=Egonex-AI/Understand-Anything&type=date&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/image?repos=Egonex-AI/Understand-Anything&type=date&legend=top-left" />
  </picture>
 </a>
 
@@ -384,5 +402,5 @@ git add .gitattributes .understand-anything/
 </p>
 
 <p align="center">
-  MIT 라이선스 &copy; <a href="https://github.com/GodSealS">GodSealS</a>
+  MIT License &copy; Yuxiang Lin and Infinite Universe, Inc.
 </p>
