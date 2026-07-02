@@ -1,12 +1,16 @@
 ---
 name: understand-chat
 description: Use when you need to ask questions about a codebase or understand code using a knowledge graph
-argument-hint: [query]
+argument-hint: [query] [path?]
 ---
 
 # /understand-chat
 
-Answer questions about this codebase using the knowledge graph at `.understand-anything/knowledge-graph.json`.
+Answer questions about a codebase using a knowledge graph.
+
+- If `$ARGUMENTS` contains a path argument (the last argument if multiple), resolve the graph at `${path}/.understand-anything/knowledge-graph.json`.
+- If no path is provided, use the current project's graph at `.understand-anything/knowledge-graph.json`.
+- The first argument before the path (if any) is the query.
 
 ## Graph Structure Reference
 
@@ -31,11 +35,14 @@ The knowledge graph JSON has this structure:
 
 ## Instructions
 
-1. Check that `.understand-anything/knowledge-graph.json` exists in the current project root. If not, tell the user to run `/understand` first.
+1. **Determine the graph path**: Extract the optional path from `$ARGUMENTS`. The path is the last argument if there are multiple arguments, otherwise there is no path argument. Then resolve the knowledge graph file:
+   - If a path is provided: `${path}/.understand-anything/knowledge-graph.json`
+   - If no path: `.understand-anything/knowledge-graph.json`
+   - Check that the resolved graph file exists. If not, tell the user the graph was not found (suggest running `/understand` in that project first).
 
-2. **Read project metadata only** — use Grep or Read with a line limit to extract just the `"project"` section from the top of the file for context (name, description, languages, frameworks).
+2. **Read project metadata only** — use Grep or Read with a line limit to extract just the `"project"` section from the top of the resolved graph file for context (name, description, languages, frameworks).
 
-3. **Search for relevant nodes** — use Grep to search the knowledge graph file for the user's query keywords: "$ARGUMENTS"
+3. **Search for relevant nodes** — use Grep to search the resolved knowledge graph file for the user's query keywords (all arguments except the trailing path): "$ARGUMENTS"
    - Search `"name"` fields: `grep -i "query_keyword"` in the graph file
    - Search `"summary"` fields for semantic matches
    - Search `"tags"` arrays for topic matches
