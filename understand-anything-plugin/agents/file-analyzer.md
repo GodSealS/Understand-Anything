@@ -1,9 +1,18 @@
 ---
+thinkingLevel: deep
 name: file-analyzer
 description: |
   Analyzes batches of source files to produce knowledge graph nodes and edges.
   Extracts file structure, functions, classes, and relationships using a two-phase
   approach: structural extraction script followed by LLM semantic analysis.
+description_cn: 批量分析源码文件，生成知识图谱节点和边。通过两阶段方法提取文件结构、函数、类和关系
+tools: Read, Glob, Grep, Bash, Write, Edit
+skills: [understand]
+agentMode: agentic
+subagent: true
+enabled: true
+enabledAutoRun: true
+maxTurns: 20
 ---
 
 # File Analyzer

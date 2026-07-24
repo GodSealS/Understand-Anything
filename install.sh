@@ -193,6 +193,21 @@ cmd_install() {
   printf -- '→ Linking universal plugin root\n'
   link_plugin_root
 
+  if [[ "$id" == "codesquad" ]]; then
+    printf -- '→ Linking agents for CodeSquad\n'
+    local agents_target="$HOME/.codesquad/agents"
+    local agents_src="$REPO_DIR/understand-anything-plugin/agents"
+    mkdir -p "$agents_target"
+    local agent_md
+    while IFS= read -r agent_md; do
+      [[ -n "$agent_md" ]] || continue
+      local aname
+      aname="$(basename "$agent_md")"
+      ln -sfn "$agent_md" "$agents_target/$aname"
+      printf '  ✓ %s → %s\n' "$agents_target/$aname" "$agent_md"
+    done < <(find "$agents_src" -maxdepth 1 -type f -name '*.md' | LC_ALL=C sort)
+  fi
+
   if [[ "$id" == "kiro" ]]; then
     printf -- '→ Creating Kiro agent configuration\n'
     mkdir -p "$HOME/.kiro/agents"
@@ -242,6 +257,19 @@ cmd_uninstall() {
 
   printf -- '→ Removing skill links for %s\n' "$id"
   unlink_skills "$target" "$style"
+  if [[ "$id" == "codesquad" ]]; then
+    printf -- '→ Removing agent links for CodeSquad\n'
+    local agents_target="$HOME/.codesquad/agents"
+    if [[ -d "$agents_target" ]]; then
+      local link resolved
+      for link in "$agents_target"/*; do
+        [[ -L "$link" ]] || continue
+        resolved="$(readlink "$link" 2>/dev/null || true)"
+        [[ "$resolved" == *"/understand-anything-plugin/agents/"* ]] || continue
+        rm -f "$link"
+      done
+    fi
+  fi
   if [[ "$id" == "kiro" && -f "$HOME/.kiro/agents/understand.json" ]]; then
     rm -f "$HOME/.kiro/agents/understand.json"
     printf '  ✓ removed %s\n' "$HOME/.kiro/agents/understand.json"

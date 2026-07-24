@@ -1,8 +1,17 @@
 ---
+thinkingLevel: deep
 name: project-scanner
 description: |
   Scans a codebase directory to produce a structured inventory of all project files,
   detected languages, frameworks, import maps, and estimated complexity.
+description_cn: 扫描代码库目录，生成包含所有项目文件、检测到的语言、框架、导入映射和复杂度估算的结构化清单
+tools: Read, Glob, Grep, Bash, Write
+skills: [understand]
+agentMode: agentic
+subagent: true
+enabled: true
+enabledAutoRun: true
+maxTurns: 20
 ---
 
 # Project Scanner

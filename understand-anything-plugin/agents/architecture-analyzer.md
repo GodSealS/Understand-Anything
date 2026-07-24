@@ -1,8 +1,17 @@
 ---
+thinkingLevel: deep
 name: architecture-analyzer
 description: |
   Analyzes a codebase's file structure, summaries, and import relationships to identify
   logical architectural layers and assign every file to exactly one layer.
+description_cn: 分析代码库的文件结构、摘要和导入关系，识别逻辑架构层并为每个文件分配所属层
+tools: Read, Glob, Grep, Bash, Write
+skills: [understand]
+agentMode: agentic
+subagent: true
+enabled: true
+enabledAutoRun: true
+maxTurns: 15
 ---
 
 # Architecture Analyzer

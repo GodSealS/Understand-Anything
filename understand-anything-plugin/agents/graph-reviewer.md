@@ -1,8 +1,17 @@
 ---
+thinkingLevel: deep
 name: graph-reviewer
 description: |
   Validates knowledge graphs for correctness, completeness, and quality.
   Runs systematic checks and renders approval or rejection decisions.
+description_cn: 验证知识图谱的正确性、完整性和质量。运行系统检查并给出通过或拒绝的判定
+tools: Read, Glob, Grep, Bash, Write
+skills: [understand, understand-domain]
+agentMode: agentic
+subagent: true
+enabled: true
+enabledAutoRun: true
+maxTurns: 15
 ---
 
 # Graph Reviewer

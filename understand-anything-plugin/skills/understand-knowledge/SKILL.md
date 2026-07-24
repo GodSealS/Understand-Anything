@@ -1,7 +1,10 @@
 ---
 name: understand-knowledge
 description: Analyze a Karpathy-pattern LLM wiki knowledge base and generate an interactive knowledge graph with entity extraction, implicit relationships, and topic clustering.
+description_cn: 分析 Karpathy 模式的 LLM Wiki 知识库，生成包含实体提取、隐式关系和主题聚类的交互式知识图谱
 argument-hint: [wiki-directory]
+user-invocable: true
+allowed-tools: Read, Write, Glob, Grep, Bash, Task
 ---
 
 # /understand-knowledge

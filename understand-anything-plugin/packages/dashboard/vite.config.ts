@@ -260,10 +260,34 @@ export default defineConfig({
             return;
           }
 
+          // Resolve the filename from the pathname.  Needed early so the
+          // token-bypass check below can look for a matching public/ file.
+          const fileName =
+            pathname === "/diff-overlay.json"
+              ? "diff-overlay.json"
+              : pathname === "/meta.json"
+              ? "meta.json"
+              : pathname === "/domain-graph.json"
+              ? "domain-graph.json"
+              : pathname === "/config.json"
+              ? "config.json"
+              : pathname === "/file-content.json"
+              ? "file-content.json"
+              : "knowledge-graph.json";
+
           // FIX 3 — require the one-time token on all data endpoints.
-          // Requests without a matching ?token= get a 403.
+          // Requests without a matching ?token= get a 403, UNLESS the file
+          // exists in public/ (demo data).  Fall through to Vite's static
+          // serving so the demo graph is always reachable without a token.
           if (url.searchParams.get("token") !== ACCESS_TOKEN) {
-            sendJson(res, 403, { error: "Forbidden: missing or invalid token" });
+            // Check if this file exists in public/ (demo data fallback)
+            const publicPath = path.resolve(__dirname, "public", fileName);
+            if (!fs.existsSync(publicPath)) {
+              sendJson(res, 403, { error: "Forbidden: missing or invalid token" });
+              return;
+            }
+            // File exists in public/ — let Vite's static file server handle it
+            next();
             return;
           }
 
@@ -290,15 +314,6 @@ export default defineConfig({
             sendJson(res, 200, { autoUpdate: false, outputLanguage: "en" });
             return;
           }
-
-          const fileName =
-            pathname === "/diff-overlay.json"
-              ? "diff-overlay.json"
-              : pathname === "/meta.json"
-              ? "meta.json"
-              : pathname === "/domain-graph.json"
-              ? "domain-graph.json"
-              : "knowledge-graph.json";
 
           const candidates = graphFileCandidates(fileName);
 
@@ -347,14 +362,10 @@ export default defineConfig({
             return;
           }
 
-          // No matching file found on disk.
-          res.statusCode = 404;
-          if (pathname === "/knowledge-graph.json") {
-            res.setHeader("Content-Type", "application/json");
-            res.end(JSON.stringify({ error: "No knowledge graph found. Run /understand first." }));
-          } else {
-            res.end();
-          }
+          // No matching file found in project directories.
+          // Fall through to Vite's built-in static serving so demo data
+          // in public/ (e.g. public/knowledge-graph.json) is reachable.
+          next();
         });
       },
     },

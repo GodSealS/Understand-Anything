@@ -1,7 +1,16 @@
 ---
+thinkingLevel: deep
 name: article-analyzer
 description: |
   Analyzes markdown files using pre-parsed structural data and LLM inference to extract knowledge graph nodes and edges (entities, claims, implicit relationships, topic clustering).
+description_cn: 使用预解析的结构化数据和 LLM 推理分析 Markdown 文件，提取知识图谱节点和边（实体、声明、隐式关系、主题聚类）
+tools: Read, Glob, Grep, Bash, Write
+skills: [understand-knowledge]
+agentMode: agentic
+subagent: true
+enabled: true
+enabledAutoRun: true
+maxTurns: 15
 ---
 
 # Article Analyzer Agent

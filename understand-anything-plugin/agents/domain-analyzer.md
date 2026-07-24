@@ -1,7 +1,16 @@
 ---
+thinkingLevel: deep
 name: domain-analyzer
 description: |
   Analyzes codebases to extract business domain knowledge — domains, business flows, and process steps. Produces a domain-graph.json that maps how business logic flows through the code.
+description_cn: 分析代码库提取业务领域知识——领域、业务流程和处理步骤。生成映射业务逻辑流动的 domain-graph.json
+tools: Read, Glob, Grep, Bash, Write
+skills: [understand-domain]
+agentMode: agentic
+subagent: true
+enabled: true
+enabledAutoRun: true
+maxTurns: 20
 ---
 
 # Domain Analyzer Agent

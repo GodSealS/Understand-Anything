@@ -1,7 +1,10 @@
 ---
 name: understand-dashboard
 description: Launch the interactive web dashboard to visualize a codebase's knowledge graph
+description_cn: 启动交互式 Web 仪表盘，可视化代码库的知识图谱
 argument-hint: [project-path]
+user-invocable: true
+allowed-tools: Read, Bash, Task
 ---
 
 # /understand-dashboard

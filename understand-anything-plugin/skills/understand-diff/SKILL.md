@@ -1,6 +1,9 @@
 ---
 name: understand-diff
 description: Use when you need to analyze git diffs or pull requests to understand what changed, affected components, and risks
+description_cn: 分析 git diff 或 Pull Request，了解变更内容、受影响组件和风险
+user-invocable: true
+allowed-tools: Read, Glob, Grep, Bash, Task
 ---
 
 # /understand-diff

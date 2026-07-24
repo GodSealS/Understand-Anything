@@ -235,6 +235,18 @@ function Cmd-Install([string]$Id) {
         Write-Host "  ✓ $agentJson"
     }
 
+    if ($Id -eq 'codesquad') {
+        Write-Host '→ Linking agents for CodeSquad'
+        $agentsTarget = Join-Path $HOME '.codesquad\agents'
+        $agentsSrc = Join-Path $RepoDir 'understand-anything-plugin\agents'
+        if (-not (Test-Path $agentsTarget)) { New-Item -ItemType Directory -Path $agentsTarget | Out-Null }
+        Get-ChildItem -Path $agentsSrc -Filter '*.md' -File | Sort-Object Name | ForEach-Object {
+            $link = Join-Path $agentsTarget $_.Name
+            New-Junction $link $_.FullName
+            Write-Host "  ✓ $link → $($_.FullName)"
+        }
+    }
+
     Write-Host "`n✓ Installed Understand-Anything for $Id"
     Write-Host '  Restart your CLI or IDE to pick up the skills.'
     if ($Id -eq 'vscode') {
@@ -250,6 +262,17 @@ function Cmd-Uninstall([string]$Id) {
     $cfg = Resolve-Platform $Id
     Write-Host "→ Removing skill links for $Id"
     Unlink-Skills $cfg.Target $cfg.Style
+    if ($Id -eq 'codesquad') {
+        Write-Host '→ Removing agent links for CodeSquad'
+        $agentsTarget = Join-Path $HOME '.codesquad\agents'
+        if (Test-Path $agentsTarget) {
+            Get-ChildItem -LiteralPath $agentsTarget -Force | ForEach-Object {
+                if ($_.LinkType -eq 'Junction' -or $_.LinkType -eq 'SymbolicLink') {
+                    Remove-Reparse $_.FullName | Out-Null
+                }
+            }
+        }
+    }
     if ($Id -eq 'kiro') {
         $agentJson = Join-Path $HOME '.kiro\agents\understand.json'
         if (Test-Path $agentJson) {

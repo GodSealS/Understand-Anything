@@ -1,6 +1,9 @@
 ---
 name: understand-onboard
 description: Use when you need to generate an onboarding guide for new team members joining a project
+description_cn: 为新加入项目的团队成员生成入职指南
+user-invocable: true
+allowed-tools: Read, Glob, Grep, Bash, Task
 ---
 
 # /understand-onboard

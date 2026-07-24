@@ -1,7 +1,10 @@
 ---
 name: understand-chat
 description: Use when you need to ask questions about a codebase or understand code using a knowledge graph
+description_cn: 使用知识图谱对代码库进行问答或理解代码
 argument-hint: [query] [path?]
+user-invocable: true
+allowed-tools: Read, Glob, Grep, Bash, Task
 ---
 
 # /understand-chat

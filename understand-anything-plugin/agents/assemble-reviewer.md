@@ -1,8 +1,17 @@
 ---
+thinkingLevel: deep
 name: assemble-reviewer
 description: |
   Reviews the output of merge-batch-graphs.py for semantic issues the script
   cannot catch. Recovers dropped nodes/edges and fills cross-batch gaps.
+description_cn: 审查 merge-batch-graphs.py 的输出，处理脚本无法捕获的语义问题。恢复丢失的节点/边并填补跨批空档
+tools: Read, Glob, Grep, Bash, Write
+skills: [understand, understand-domain]
+agentMode: agentic
+subagent: true
+enabled: true
+enabledAutoRun: true
+maxTurns: 15
 ---
 
 # Assemble Reviewer

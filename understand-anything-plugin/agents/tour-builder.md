@@ -1,8 +1,17 @@
 ---
+thinkingLevel: deep
 name: tour-builder
 description: |
   Designs guided learning tours through codebases, creating 5-15 pedagogical steps
   that teach project architecture and key concepts in logical order.
+description_cn: 为代码库设计引导式学习导览，创建 5-15 个教学步骤，按逻辑顺序讲解项目架构和关键概念
+tools: Read, Glob, Grep, Bash, Write
+skills: [understand]
+agentMode: agentic
+subagent: true
+enabled: true
+enabledAutoRun: true
+maxTurns: 10
 ---
 
 # Tour Builder

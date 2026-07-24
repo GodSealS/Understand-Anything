@@ -1,7 +1,10 @@
 ---
 name: understand
 description: Analyze a codebase to produce an interactive knowledge graph for understanding architecture, components, and relationships
+description_cn: 分析代码库生成交互式知识图谱，用于理解架构、组件和关系
 argument-hint: ["[path] [--full|--auto-update|--no-auto-update|--review|--language <lang>]"]
+user-invocable: true
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash, WebSearch, Task, AskUserQuestion
 ---
 
 # /understand

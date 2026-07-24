@@ -1,7 +1,10 @@
 ---
 name: understand-explain
 description: Use when you need a deep-dive explanation of a specific file, function, or module in the codebase
+description_cn: 深入解析代码库中特定文件、函数或模块的实现细节
 argument-hint: [file-path]
+user-invocable: true
+allowed-tools: Read, Glob, Grep, Bash, Task
 ---
 
 # /understand-explain
