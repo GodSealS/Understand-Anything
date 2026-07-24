@@ -2,20 +2,17 @@
 /**
  * generate-ignore.mjs
  *
- * Writes a starter `.understandignore` into the project's data directory
- * (`.ua/`, or legacy `.understand-anything/` when that directory already
- * exists — see core's resolveUaDir) by delegating to
- * `generateStarterIgnoreFile` in `@understand-anything/core`. Invoked from
- * SKILL.md Phase 0.5; replaces the inline `node -e "…"` block that previously
- * duplicated the generator logic.
+ * Writes a starter `.understand-anything/.understandignore` for the target
+ * project by delegating to `generateStarterIgnoreFile` in
+ * `@understand-anything/core`. Invoked from SKILL.md Phase 0.5; replaces the
+ * inline `node -e "…"` block that previously duplicated the generator logic.
  *
  * Usage:
  *   node generate-ignore.mjs <projectRoot>
  *
  * Behaviour:
  *   - Exits 0 with a stderr notice if the target file already exists.
- *   - Creates the resolved data dir (`.ua/` or legacy
- *     `.understand-anything/`) if missing.
+ *   - Creates `<projectRoot>/.understand-anything/` if missing.
  *   - Emits a one-line stderr summary on success.
  *
  * Mirrors the @understand-anything/core resolution dance used by
@@ -53,10 +50,10 @@ try {
   core = await import(pathToFileURL(resolve(pluginRoot, 'packages/core/dist/index.js')).href);
 }
 
-const { generateStarterIgnoreFile, resolveUaDir } = core;
+const { generateStarterIgnoreFile } = core;
 
 const projectRoot = resolve(process.argv[2] ?? process.cwd());
-const outDir = resolveUaDir(projectRoot);
+const outDir = join(projectRoot, '.understand-anything');
 const outPath = join(outDir, '.understandignore');
 
 if (existsSync(outPath)) {

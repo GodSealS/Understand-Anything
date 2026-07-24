@@ -3,8 +3,7 @@ import { mkdtempSync, rmSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { writeFileSync } from "node:fs";
-import { saveGraph, loadGraph, saveMeta, loadMeta, saveFingerprints, loadFingerprints, saveConfig, loadConfig, resolveUaDirName } from "./index.js";
-import { mkdirSync } from "node:fs";
+import { saveGraph, loadGraph, saveMeta, loadMeta, saveFingerprints, loadFingerprints, saveConfig, loadConfig } from "./index.js";
 import type { KnowledgeGraph, AnalysisMeta } from "../types.js";
 import type { FingerprintStore } from "../fingerprint.js";
 
@@ -76,10 +75,10 @@ describe("persistence", () => {
   };
 
   describe("saveGraph / loadGraph", () => {
-    it("should write knowledge-graph.json to .ua/", () => {
+    it("should write knowledge-graph.json to .understand-anything/", () => {
       saveGraph(tempDir, sampleGraph);
 
-      const filePath = join(tempDir, ".ua", "knowledge-graph.json");
+      const filePath = join(tempDir, ".understand-anything", "knowledge-graph.json");
       expect(existsSync(filePath)).toBe(true);
     });
 
@@ -116,10 +115,10 @@ describe("persistence", () => {
   });
 
   describe("saveMeta / loadMeta", () => {
-    it("should write meta.json to .ua/", () => {
+    it("should write meta.json to .understand-anything/", () => {
       saveMeta(tempDir, sampleMeta);
 
-      const filePath = join(tempDir, ".ua", "meta.json");
+      const filePath = join(tempDir, ".understand-anything", "meta.json");
       expect(existsSync(filePath)).toBe(true);
     });
 
@@ -169,7 +168,7 @@ describe("persistence", () => {
     });
 
     it("should return null when fingerprints.json is corrupted", () => {
-      const dir = join(tempDir, ".ua");
+      const dir = join(tempDir, ".understand-anything");
       // Ensure the directory exists by saving first, then overwrite with garbage
       saveFingerprints(tempDir, sampleFingerprints);
       writeFileSync(join(dir, "fingerprints.json"), "{{not valid json!!", "utf-8");
@@ -195,52 +194,11 @@ describe("persistence", () => {
 
     it("should return default config when config.json is corrupted", () => {
       saveConfig(tempDir, { autoUpdate: true });
-      const dir = join(tempDir, ".ua");
+      const dir = join(tempDir, ".understand-anything");
       writeFileSync(join(dir, "config.json"), "not json!!", "utf-8");
 
       const loaded = loadConfig(tempDir);
       expect(loaded).toEqual({ autoUpdate: false, outputLanguage: "en" });
     });
-  });
-});
-
-describe("legacy .understand-anything compatibility", () => {
-  let tempDir: string;
-
-  beforeEach(() => {
-    tempDir = mkdtempSync(join(tmpdir(), "ua-legacy-test-"));
-  });
-
-  afterEach(() => {
-    rmSync(tempDir, { recursive: true, force: true });
-  });
-
-  it("resolves to .ua for fresh projects", () => {
-    expect(resolveUaDirName(tempDir)).toBe(".ua");
-  });
-
-  it("keeps using an existing .understand-anything/ for reads and writes", () => {
-    mkdirSync(join(tempDir, ".understand-anything"));
-    expect(resolveUaDirName(tempDir)).toBe(".understand-anything");
-
-    saveMeta(tempDir, { analyzedAt: "t", gitCommitHash: "abc", fileCount: 1 } as never);
-    expect(existsSync(join(tempDir, ".understand-anything", "meta.json"))).toBe(true);
-    expect(existsSync(join(tempDir, ".ua"))).toBe(false);
-    expect(loadMeta(tempDir)?.gitCommitHash).toBe("abc");
-  });
-
-  it("reads a graph saved under the legacy directory", () => {
-    mkdirSync(join(tempDir, ".understand-anything"));
-    const graph = {
-      version: "1.0.0",
-      project: { name: "p", languages: [], frameworks: [], description: "d", analyzedAt: "t", gitCommitHash: "" },
-      nodes: [{ id: "file:a.ts", type: "file", name: "a.ts", summary: "s", tags: [], complexity: "simple" }],
-      edges: [],
-      layers: [],
-      tour: [],
-    } as never;
-    saveGraph(tempDir, graph);
-    expect(existsSync(join(tempDir, ".understand-anything", "knowledge-graph.json"))).toBe(true);
-    expect(loadGraph(tempDir)?.nodes).toHaveLength(1);
   });
 });

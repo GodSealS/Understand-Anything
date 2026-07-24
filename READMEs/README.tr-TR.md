@@ -117,7 +117,7 @@ Alan görünümüne geçin ve kodunuzun gerçek iş süreçleriyle nasıl eşle�
 /understand
 ```
 
-Çok-ajan hattı projenizi tarar, her dosya, fonksiyon, sınıf ve bağımlılığı çıkarır, ardından `.ua/knowledge-graph.json` dosyasına kaydedilen bir bilgi grafiği oluşturur. (Zaten bir `.understand-anything/` dizini olan projeler onu kullanmaya devam eder — mevcut olduğunda veri dizini olarak kalır, bu yüzden taşımaya gerek yoktur.)
+Çok-ajan hattı projenizi tarar, her dosya, fonksiyon, sınıf ve bağımlılığı çıkarır, ardından `.understand-anything/knowledge-graph.json` dosyasına kaydedilen bir bilgi grafiği oluşturur.
 
 > **Token kullanımı hakkında uyarı:** İlk `/understand` çalıştırması tüm kod tabanınızı analiz eder ve büyük projelerde önemli miktarda token tüketebilir. Bunu bir token planı / aboneliği ile çalıştırmanızı veya başlatma için yerel bir model (yukarıya bakın) kullanmanızı öneririz. Sonraki çalıştırmalar varsayılan olarak artımlıdır — yalnızca değişen dosyalar yeniden analiz edilir — bu yüzden çok daha az token kullanır.
 
@@ -202,8 +202,6 @@ iwr -useb https://raw.githubusercontent.com/Egonex-AI/Understand-Anything/main/i
 ```
 
 Kurulum betiği depoyu `~/.understand-anything/repo` dizinine klonlar ve seçilen platform için uygun sembolik bağlantıları oluşturur. Sonrasında CLI/IDE'ni yeniden başlat.
-
-> **Skill çağırma hakkında not:** Çağırma öneki platforma göre değişir. Çoğu platform eğik çizgi komutları (`/understand`) kullanır, ancak **Codex `$` kullanır** — `/understand` değil, `$understand` yaz. İki önek de tanınmıyorsa doğal dille iste: *"understand skill'ini kullanarak bu projeyi analiz et."*
 
 - Desteklenen `<platform>` değerleri: `gemini`, `codex`, `opencode`, `pi`, `openclaw`, `antigravity`, `vibe`, `vscode`, `hermes`, `cline`, `kimi`, `nanobot`, `kiro`
 - Daha sonra güncelle: `./install.sh --update`
@@ -311,11 +309,11 @@ Graf yalnızca bir JSON dosyasıdır — **bir kez commit'leyin, ekip arkadaşla
 
 > **Örnek:** [GoogleCloudPlatform/microservices-demo](https://github.com/GoogleCloudPlatform/microservices-demo) — commit'lenmiş grafı içeren Go / Java / Python / Node çok dilli referans projesi.
 
-**Neyi commit'leyin:** `.ua/` içindeki her şey, *ancak* `intermediate/` ve `diff-overlay.json` hariç (bunlar yerel geçici dosyalardır). (Eski projeler `.understand-anything/` kullanır — mevcut olan buysa aşağıdaki dizin adını onunla değiştirin.)
+**Neyi commit'leyin:** `.understand-anything/` içindeki her şey, *ancak* `intermediate/` ve `diff-overlay.json` hariç (bunlar yerel geçici dosyalardır).
 
 ```gitignore
-.ua/intermediate/
-.ua/diff-overlay.json
+.understand-anything/intermediate/
+.understand-anything/diff-overlay.json
 ```
 
 **Güncel tutun:** `/understand --auto-update` etkinleştirin — bir post-commit kancası grafı artımlı olarak yamalar, böylece her commit eşleşen bir grafla birlikte gelir. Veya sürümden önce `/understand` komutunu elle yeniden çalıştırın.
@@ -324,21 +322,9 @@ Graf yalnızca bir JSON dosyasıdır — **bir kez commit'leyin, ekip arkadaşla
 
 ```bash
 git lfs install
-git lfs track ".ua/*.json"
-git add .gitattributes .ua/
+git lfs track ".understand-anything/*.json"
+git add .gitattributes .understand-anything/
 ```
-
-### Dashboard'u Claude Code olmadan görüntüleyin
-
-Graf bir kez üretilip commit'lendikten sonra, ekipteki herkes onu tek bir komutla açabilir — Claude Code yok, LLM yok, API anahtarı yok. Yalnızca Node.js (>= 18) gerekir:
-
-```bash
-npx https://github.com/Egonex-AI/Understand-Anything/releases/latest/download/understand-anything-viewer.tgz /path/to/analyzed/project
-```
-
-Terminal, tokenlı bir URL (`http://127.0.0.1:5173/?token=…`) yazdırır ve tam etkileşimli dashboard'u tarayıcınızda açar. Proje dizini (varsayılan: geçerli dizin), commit'lenmiş veri dizinini (`.ua/` veya eski `.understand-anything/`) içermelidir. Her şey yerel diskten salt okunur olarak sunulur — LLM çağrısı yapılmaz, hiçbir veri makinenizden çıkmaz.
-
-Depoyu klonlayarak mı çalışıyorsunuz? `pnpm install && pnpm --filter @understand-anything/core build`, ardından `GRAPH_DIR=/path/to/analyzed/project pnpm dev:dashboard` aynı işi Vite geliştirme sunucusu üzerinden yapar.
 
 ---
 

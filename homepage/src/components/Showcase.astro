@@ -4,15 +4,15 @@ const demoUrl = `${base.endsWith('/') ? base : base + '/'}demo/index.html`;
 ---
 
 <!-- Live Demo -->
-<section class="showcase showcase--demo" id="live-demo">
+<section class="showcase showcase--demo">
   <span class="showcase-label showcase-label--accent reveal">Live Demo</span>
   <h2 class="showcase-heading reveal">
     See what your code is <span class="grad">really</span> doing
   </h2>
   <p class="showcase-desc showcase-desc--wide reveal">
     Explore every file, function, and dependency &mdash; or switch to <span class="grad">business
-    knowledge</span> mode and watch your code<span class="showcase-desc-break"><br /></span>
-    transform into authentication flows, payment pipelines, and user lifecycles. Not just a map.<span class="showcase-desc-break"><br /></span>
+    knowledge</span> mode and watch your code transform into authentication flows,
+    payment pipelines, and user lifecycles. Not just a map.
     <strong>The story behind your codebase, fully interactive.</strong>
   </p>
   <div class="showcase-frame showcase-frame--featured reveal reveal-delay-1">
@@ -98,11 +98,7 @@ const demoUrl = `${base.endsWith('/') ? base : base + '/'}demo/index.html`;
   }
 
   .showcase-desc--wide {
-    max-width: 960px;
-  }
-
-  .showcase-desc-break {
-    display: inline;
+    max-width: 700px;
   }
 
   .showcase-desc strong {
@@ -209,6 +205,5 @@ const demoUrl = `${base.endsWith('/') ? base : base + '/'}demo/index.html`;
     .showcase-features { gap: 0.5rem; }
     .showcase-pill { font-size: 0.7rem; padding: 0.25rem 0.65rem; }
     .showcase-iframe-wrap { aspect-ratio: 4 / 3; }
-    .showcase-desc-break { display: none; }
   }
 </style>

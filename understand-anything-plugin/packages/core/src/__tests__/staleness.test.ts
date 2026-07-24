@@ -7,11 +7,7 @@ vi.mock("child_process", () => ({
 
 // Import after mocking
 import { execFileSync } from "child_process";
-import {
-  getChangedFiles,
-  isStale,
-  mergeGraphUpdate,
-} from "../staleness.js";
+import { getChangedFiles, isStale, mergeGraphUpdate } from "../staleness.js";
 
 const mockedExecFileSync = vi.mocked(execFileSync);
 

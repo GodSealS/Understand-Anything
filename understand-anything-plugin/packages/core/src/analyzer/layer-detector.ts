@@ -104,18 +104,10 @@ function matchFileToLayer(filePath: string): string | null {
  */
 export function detectLayers(graph: KnowledgeGraph): Layer[] {
   const layerMap = new Map<string, string[]>(); // layerName -> nodeIds
-  // file nodes without filePath go to "Core" *after* the main pass, so a
-  // single sweep over graph.nodes replaces the previous two full passes while
-  // preserving the original ordering (all with-path entries first, then
-  // path-less ones) and the Map key-insertion order.
-  const corePathless: string[] = [];
 
   for (const node of graph.nodes) {
     if (node.type !== "file") continue;
-    if (!node.filePath) {
-      corePathless.push(node.id);
-      continue;
-    }
+    if (!node.filePath) continue;
 
     const layerName = matchFileToLayer(node.filePath) ?? "Core";
     const existing = layerMap.get(layerName) ?? [];
@@ -123,9 +115,13 @@ export function detectLayers(graph: KnowledgeGraph): Layer[] {
     layerMap.set(layerName, existing);
   }
 
-  if (corePathless.length > 0) {
+  // Also catch file nodes without filePath
+  for (const node of graph.nodes) {
+    if (node.type !== "file") continue;
+    if (node.filePath) continue;
+
     const existing = layerMap.get("Core") ?? [];
-    for (const id of corePathless) existing.push(id);
+    existing.push(node.id);
     layerMap.set("Core", existing);
   }
 

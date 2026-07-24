@@ -4,10 +4,6 @@ export const swiftConfig = {
   id: "swift",
   displayName: "Swift",
   extensions: [".swift"],
-  treeSitter: {
-    wasmPackage: "@understand-anything/tree-sitter-swift-wasm",
-    wasmFile: "tree-sitter-swift.wasm",
-  },
   concepts: [
     "optionals",
     "protocols",

@@ -1,13 +1,12 @@
-// Node types (27 total: 5 code + 8 non-code + 3 domain + 5 knowledge + 6 design)
+// Node types (21 total: 5 code + 8 non-code + 3 domain + 5 knowledge)
 export type NodeType =
   | "file" | "function" | "class" | "module" | "concept"
   | "config" | "document" | "service" | "table" | "endpoint"
   | "pipeline" | "schema" | "resource"
   | "domain" | "flow" | "step"
-  | "article" | "entity" | "topic" | "claim" | "source"
-  | "page" | "screen" | "component" | "componentSet" | "instance" | "token";
+  | "article" | "entity" | "topic" | "claim" | "source";
 
-// Edge types (38 total in 9 categories: Structural, Behavioral, Data flow, Dependencies, Semantic, Infrastructure/Schema, Domain, Knowledge, Design)
+// Edge types (35 total in 8 categories: Structural, Behavioral, Data flow, Dependencies, Semantic, Infrastructure/Schema, Domain, Knowledge)
 export type EdgeType =
   | "imports" | "exports" | "contains" | "inherits" | "implements"  // Structural
   | "calls" | "subscribes" | "publishes" | "middleware"              // Behavioral
@@ -17,8 +16,7 @@ export type EdgeType =
   | "deploys" | "serves" | "provisions" | "triggers"                // Infrastructure
   | "migrates" | "documents" | "routes" | "defines_schema"          // Schema/Data
   | "contains_flow" | "flow_step" | "cross_domain"                  // Domain
-  | "cites" | "contradicts" | "builds_on" | "exemplifies" | "categorized_under" | "authored_by" // Knowledge
-  | "instance_of" | "variant_of" | "uses_token"; // Design
+  | "cites" | "contradicts" | "builds_on" | "exemplifies" | "categorized_under" | "authored_by"; // Knowledge
 
 // Optional knowledge metadata for article/entity/topic/claim/source nodes
 export interface KnowledgeMeta {
@@ -37,20 +35,7 @@ export interface DomainMeta {
   entryType?: "http" | "cli" | "event" | "cron" | "manual";
 }
 
-// Optional Figma metadata for page/screen/component/componentSet/instance/token nodes
-export interface FigmaMeta {
-  fileKey?: string;
-  nodeId?: string;            // Figma node id, e.g. "1:23"
-  figmaType?: string;         // FRAME | COMPONENT | COMPONENT_SET | INSTANCE | TEXT ...
-  thumbnailUrl?: string;      // lazily filled from GET /v1/images
-  dimensions?: { width: number; height: number };
-  tokenKind?: "color" | "type" | "spacing" | "effect" | "grid";
-  tokenValue?: string;        // e.g. "#0A84FF", "16px"
-  prototypeTargets?: string[]; // roadmap B — recorded now, edges later
-  componentKey?: string;       // roadmap C — recorded now
-}
-
-// GraphNode with 27 types: 5 code + 8 non-code + 3 domain + 5 knowledge + 6 design
+// GraphNode with 21 types: 5 code + 8 non-code + 3 domain + 5 knowledge
 export interface GraphNode {
   id: string;
   type: NodeType;
@@ -63,7 +48,6 @@ export interface GraphNode {
   languageNotes?: string;
   domainMeta?: DomainMeta;
   knowledgeMeta?: KnowledgeMeta;
-  figmaMeta?: FigmaMeta;
 }
 
 // GraphEdge with rich relationship modeling
@@ -106,7 +90,7 @@ export interface ProjectMeta {
 // Root KnowledgeGraph
 export interface KnowledgeGraph {
   version: string;
-  kind?: "codebase" | "knowledge" | "design";
+  kind?: "codebase" | "knowledge";
   project: ProjectMeta;
   nodes: GraphNode[];
   edges: GraphEdge[];
@@ -215,14 +199,4 @@ export interface AnalyzerPlugin {
   resolveImports?(filePath: string, content: string): ImportResolution[];
   extractCallGraph?(filePath: string, content: string): CallGraphEntry[];
   extractReferences?(filePath: string, content: string): ReferenceResolution[];
-  /**
-   * Optional single-parse fast path returning both structure and call graph.
-   * Plugins that parse source (e.g. tree-sitter) can implement this to avoid
-   * parsing the same file twice when a caller needs both. Output must equal
-   * `analyzeFile` + `extractCallGraph` called separately.
-   */
-  analyzeFileFull?(
-    filePath: string,
-    content: string,
-  ): { structure: StructuralAnalysis; callGraph: CallGraphEntry[] };
 }

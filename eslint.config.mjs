@@ -11,7 +11,6 @@ export default tseslint.config(
       '**/public/**',
       '**/coverage/**',
       '**/.understand-anything/**',
-      '**/.ua/**',
       '**/.claude-plugin/**',
       '**/.cursor-plugin/**',
       '**/.copilot-plugin/**',

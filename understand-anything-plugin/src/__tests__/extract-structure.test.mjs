@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { buildResult } from "../../skills/understand/extract-structure-result.mjs";
+import { buildResult } from "../../skills/understand/extract-structure.mjs";
 
 const file = (overrides = {}) => ({
   path: "src/foo.py",

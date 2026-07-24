@@ -165,11 +165,8 @@ export function generateHeuristicTour(graph: KnowledgeGraph): TourStep[] {
   }
 
   const topoOrder: string[] = [];
-  // Index cursor instead of queue.shift(): shift() is O(n) (re-indexes the
-  // whole array) → O(n²) over the BFS. A head pointer makes each dequeue O(1).
-  let head = 0;
-  while (head < queue.length) {
-    const current = queue[head++];
+  while (queue.length > 0) {
+    const current = queue.shift()!;
     topoOrder.push(current);
 
     for (const neighbor of adjacency.get(current) ?? []) {
@@ -181,15 +178,10 @@ export function generateHeuristicTour(graph: KnowledgeGraph): TourStep[] {
     }
   }
 
-  // Add any nodes not reached by topological sort (isolated nodes or cycles).
-  // `topoOrder.includes()` per node was O(n²) over the full node set; a Set
-  // membership test makes it O(n). Mirror the array-grows semantics by adding
-  // to the set on push so a duplicate node id is still de-duplicated.
-  const inTopo = new Set(topoOrder);
+  // Add any nodes not reached by topological sort (isolated nodes or cycles)
   for (const node of codeNodes) {
-    if (!inTopo.has(node.id)) {
+    if (!topoOrder.includes(node.id)) {
       topoOrder.push(node.id);
-      inTopo.add(node.id);
     }
   }
 
