@@ -6,6 +6,7 @@ dist
 .env
 .env.*
 coverage/
+benchmark-results/
 *.log
 __pycache__/
 .claude/
@@ -17,6 +18,7 @@ venv/
 *.pyc
 *.pyo
 Thumbs.db
+*.tgz
 .codebuddy/
 CODEBUDDY.md
 .idea/

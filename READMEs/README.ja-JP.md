@@ -7,6 +7,12 @@
 </p>
 
 <p align="center">
+  <strong>Understand Anything. <a href="https://egonex.ai">Understand Anyone.</a></strong>
+  <br />
+  <em>AI は人を置き換えるのではなく、人を支えるためにあるべきです。</em>
+</p>
+
+<p align="center">
   <a href="https://trendshift.io/repositories/23482" target="_blank"><img src="https://trendshift.io/api/badge/repositories/23482" alt="Understand Anything | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 </p>
 
@@ -23,9 +29,12 @@
   <a href="#copilot-cli"><img src="https://img.shields.io/badge/Copilot_CLI-24292e" alt="Copilot CLI" /></a>
   <a href="#gemini-cli"><img src="https://img.shields.io/badge/Gemini_CLI-4285F4" alt="Gemini CLI" /></a>
   <a href="#opencode"><img src="https://img.shields.io/badge/OpenCode-38bdf8" alt="OpenCode" /></a>
+  <a href="#mistral-vibe-cli"><img src="https://img.shields.io/badge/Vibe_CLI-7c3aed" alt="Vibe CLI" /></a>
+  <a href="#trae"><img src="https://img.shields.io/badge/Trae-7e22ce" alt="Trae" /></a>
   <a href="#codebuddy"><img src="https://img.shields.io/badge/CodeBuddy-0052D9" alt="CodeBuddy" /></a>
   <a href="https://understand-anything.com"><img src="https://img.shields.io/badge/Homepage-d4a574" alt="ホームページ" /></a>
   <a href="https://understand-anything.com/demo/"><img src="https://img.shields.io/badge/Live_Demo-00c853" alt="ライブデモ" /></a>
+  <a href="https://egonex.ai"><img src="https://img.shields.io/badge/Understand_Anyone-egonex.ai-d4a574" alt="Understand Anyone" /></a>
 </p>
 
 <p align="center">
@@ -33,9 +42,9 @@
 </p>
 
 <p align="center">
-  <strong>An open-source project from <a href="https://github.com/Egonex-AI">Egonex</a></strong>
+  <strong><a href="https://github.com/Egonex-AI">Egonex</a> によるオープンソースプロジェクト</strong>
   <br />
-  <em>Originally created by <a href="https://github.com/Lum1104">Lum1104</a>.</em>
+  <em>原作者: <a href="https://github.com/Lum1104">Lum1104</a></em>
 </p>
 
 ---
@@ -117,7 +126,7 @@ Understand Anything は [Claude Code Plugin](https://code.claude.com/docs/en/plu
 /understand
 ```
 
-マルチエージェントパイプラインがプロジェクトをスキャンし、すべてのファイル・関数・クラス・依存関係を抽出して、`.understand-anything/knowledge-graph.json` にナレッジグラフを保存します。
+マルチエージェントパイプラインがプロジェクトをスキャンし、すべてのファイル・関数・クラス・依存関係を抽出して、`.ua/knowledge-graph.json` にナレッジグラフを保存します。（すでに `.understand-anything/` ディレクトリがあるプロジェクトはそれを引き続き使用します。存在する場合はそれがデータディレクトリのままなので、移行は不要です。）
 
 > **トークン使用量にご注意:** 初回の `/understand` はコードベース全体を分析するため、大規模プロジェクトではかなりのトークンを消費することがあります。トークンプラン / サブスクリプションでの実行、または初期化にはローカルモデル（上記参照）の使用をおすすめします。以降の実行はデフォルトで増分処理され、変更されたファイルのみ再分析するため、消費トークンは大幅に少なくなります。
 
@@ -129,6 +138,8 @@ Understand Anything は [Claude Code Plugin](https://code.claude.com/docs/en/plu
 
 # サポート言語：en（デフォルト）、zh、zh-TW、ja、ko、ru
 ```
+
+プロジェクトでの**初回実行時**に `--language` を指定せず、保存済みの言語設定もない場合、`/understand` は会話で使われている言語を検出します。英語以外が検出された場合は、生成前にその言語を使用するか、別の言語へ変更するかを確認します。英語での会話には影響しません。選択結果は `.ua/config.json` に保存され、以降の実行でも再利用されます。
 
 `--language` パラメータは以下に影響します：
 - ナレッジグラフのノードサマリーと説明
@@ -187,7 +198,7 @@ Understand-Anythingは複数のAIコーディングプラットフォームで�
 /plugin install understand-anything
 ```
 
-### ワンラインインストール（Codex / OpenCode / OpenClaw / Antigravity / Gemini CLI / Pi Agent / Vibe CLI / VS Code Copilot / Hermes / Cline / KIMI CLI / Nanobot / Kiro）
+### ワンラインインストール（Codex / OpenCode / OpenClaw / Antigravity / Gemini CLI / Pi Agent / Vibe CLI / VS Code Copilot / Hermes / Cline / KIMI CLI / Trae / Nanobot / Kiro）
 
 **macOS / Linux：**
 ```bash
@@ -203,7 +214,9 @@ iwr -useb https://raw.githubusercontent.com/Egonex-AI/Understand-Anything/main/i
 
 インストーラーはリポジトリを `~/.understand-anything/repo` にクローンし、選択したプラットフォーム用のシンボリックリンクを作成します。完了後はCLI/IDEを再起動してください。
 
-- サポートされる `<platform>` 値：`gemini`、`codex`、`opencode`、`pi`、`openclaw`、`antigravity`、`vibe`、`vscode`、`hermes`、`cline`、`kimi`、`nanobot`、`kiro`
+> **スキルの呼び出し方について：** 呼び出しのプレフィックスはプラットフォームごとに異なります。多くのプラットフォームはスラッシュコマンド（`/understand`）を使いますが、**Codexは`$`を使います** — `/understand`ではなく`$understand`と入力してください。どちらのプレフィックスも認識されない場合は、*「understandスキルを使ってこのプロジェクトを分析して」*のように自然言語で依頼できます。
+
+- サポートされる `<platform>` 値：`gemini`、`codex`、`opencode`、`pi`、`openclaw`、`antigravity`、`vibe`、`vscode`、`hermes`、`cline`、`kimi`、`trae`、`nanobot`、`kiro`
 - 後で更新：`./install.sh --update`
 - アンインストール：`./install.sh --uninstall <platform>`
 
@@ -296,6 +309,7 @@ curl -fsSL https://raw.githubusercontent.com/Egonex-AI/Understand-Anything/main/
 | Hermes | ✅ サポート | `install.sh hermes` |
 | Cline | ✅ サポート | `install.sh cline` |
 | KIMI CLI | ✅ サポート | `install.sh kimi` |
+| Trae | ✅ サポート | `install.sh trae` |
 | CodeBuddy | ✅ サポート | `install.sh codebuddy` |
 | CodeSquad | ✅ サポート | `install.sh codesquad` |
 | Nanobot | ✅ サポート | `install.sh nanobot` |
@@ -309,11 +323,11 @@ curl -fsSL https://raw.githubusercontent.com/Egonex-AI/Understand-Anything/main/
 
 > **例：** [GoogleCloudPlatform/microservices-demo](https://github.com/GoogleCloudPlatform/microservices-demo) —— コミット済みのグラフを含む Go / Java / Python / Node のリファレンスプロジェクト。
 
-**コミット対象：** `.understand-anything/` 内のすべてのファイル。ただし `intermediate/` と `diff-overlay.json` は除きます（これらはローカルの一時ファイルです）。
+**コミット対象：** `.ua/` 内のすべてのファイル。ただし `intermediate/` と `diff-overlay.json` は除きます（これらはローカルの一時ファイルです）。（レガシープロジェクトは `.understand-anything/` を使用します。そのディレクトリが存在する場合は、以下のディレクトリ名をそれに置き換えてください。）
 
 ```gitignore
-.understand-anything/intermediate/
-.understand-anything/diff-overlay.json
+.ua/intermediate/
+.ua/diff-overlay.json
 ```
 
 **最新状態を保つ：** `/understand --auto-update` を有効にすると、post-commit フックがグラフを増分的に更新し、各コミットに対応するグラフが揃います。またはリリース前に `/understand` を手動で再実行します。
@@ -322,9 +336,21 @@ curl -fsSL https://raw.githubusercontent.com/Egonex-AI/Understand-Anything/main/
 
 ```bash
 git lfs install
-git lfs track ".understand-anything/*.json"
-git add .gitattributes .understand-anything/
+git lfs track ".ua/*.json"
+git add .gitattributes .ua/
 ```
+
+### Claude Code なしでダッシュボードを表示する
+
+グラフを生成してコミットしておけば、チームの誰でもコマンド一つで開けます。Claude Code も LLM も API キーも不要で、必要なのは Node.js（>= 18）だけです：
+
+```bash
+npx https://github.com/Egonex-AI/Understand-Anything/releases/latest/download/understand-anything-viewer.tgz /path/to/analyzed/project
+```
+
+ターミナルにトークン付き URL（`http://127.0.0.1:5173/?token=…`）が表示され、完全にインタラクティブなダッシュボードがブラウザで開きます。プロジェクトディレクトリ（デフォルト：カレントディレクトリ）には、コミットされたデータディレクトリ（`.ua/`、または旧来の `.understand-anything/`）が含まれている必要があります。すべてローカルディスクから読み取り専用で配信され、LLM 呼び出しは行われず、データがマシンの外に出ることはありません。
+
+リポジトリのクローンから作業する場合は、`pnpm install && pnpm --filter @understand-anything/core build` の後に `GRAPH_DIR=/path/to/analyzed/project pnpm dev:dashboard` を実行すれば、Vite 開発サーバー経由で同じことができます。
 
 ---
 
@@ -349,11 +375,11 @@ git add .gitattributes .understand-anything/
 | `file-analyzer` | 関数・クラス・インポートの抽出、グラフノードとエッジの生成 |
 | `architecture-analyzer` | アーキテクチャ層の特定 |
 | `tour-builder` | ガイド学習ツアーの生成 |
-| `graph-reviewer` | グラフの完全性と参照整合性の検証 |
+| `graph-reviewer` | グラフの完全性と参照整合性を検証（デフォルトではインライン実行。LLMによる完全レビューは `--review` を使用） |
 | `domain-analyzer` | ビジネスドメイン、フロー、処理ステップの抽出（`/understand-domain` で使用） |
 | `article-analyzer` | wiki 記事からエンティティ、主張、暗黙の関係を抽出（`/understand-knowledge` で使用） |
 
-ファイルアナライザーは並列実行されます（最大3つ同時）。インクリメンタル更新に対応しており、前回の実行から変更されたファイルのみを再分析します。
+ファイルアナライザーは並列実行されます（最大5つ同時、1バッチあたり20〜30ファイル）。インクリメンタル更新に対応しており、前回の実行から変更されたファイルのみを再分析します。
 
 ---
 
