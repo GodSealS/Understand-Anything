@@ -29,7 +29,7 @@ $PluginLink = Join-Path $HOME '.understand-anything-plugin'
 # Platform table — Target = skills directory; Style = "per-skill" | "folder"
 $Platforms = [ordered]@{
     gemini      = @{ Target = (Join-Path $HOME '.agents\skills');             Style = 'per-skill' }
-    codex       = @{ Target = (Join-Path $HOME '.agents\skills');             Style = 'per-skill' }
+    codex       = @{ Target = (Join-Path $HOME '.codex\skills');              Style = 'per-skill' }
     opencode    = @{ Target = (Join-Path $HOME '.agents\skills');             Style = 'per-skill' }
     pi          = @{ Target = (Join-Path $HOME '.agents\skills');             Style = 'per-skill' }
     openclaw    = @{ Target = (Join-Path $HOME '.openclaw\skills');           Style = 'folder' }
